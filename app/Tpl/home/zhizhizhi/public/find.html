@@ -1,0 +1,61 @@
+<div class="searchbox mb10">
+    <div class="blank"></div>
+    <div style="margin: 0px auto;">
+        <if condition="C('pin_sina_follow_code')">
+        <style type="text/css">
+        .WB_widget{
+            width: 130px;
+            overflow: hidden;
+            float: left;
+        }
+        </style>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+        {:C('pin_sina_follow_code')}
+        </if>
+        <if condition="C('pin_qq_follow_code')">
+        {:C('pin_qq_follow_code')}
+        </if>
+    </div>
+    
+    <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+    <a class="bds_tsina"></a>
+    <a class="bds_qzone"></a>
+    <a class="bds_tqq"></a>
+    <a class="bds_renren"></a>
+    <a class="bds_taobao"></a>
+    <span class="bds_more"></span>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+    </script>
+    <!-- Baidu Button END -->
+    <if condition="MODULE_NAME eq 'post'">
+    {:R('advert/index', array(16), 'Widget')}
+    <else/>
+    {:R('advert/index', array(15), 'Widget')}
+    </if>
+    <div class="mt15"></div>
+	<input class="search-textbox"/>
+	<button class="search-btn">搜索</button>
+</div>
+
+<div class="picks">
+	<dl>
+		<dt>最新内容</dt>
+        <volist name="new_post_list" id="val">
+        <dd class="clearfix">
+			<a class="picks-title fl" href="{:post_url($val)}">{$val.title}<span>&nbsp;&nbsp;{$val.prices}</span></a>
+			<a class="picks-pic fr" href=""><img style="width: 75px;height: 78px;" src="{:attach($val['img'],'post')}" /></a>
+		</dd>
+        </volist>
+	</dl>
+    <div class="mt15"></div>
+    <if condition="MODULE_NAME eq 'post'">
+    {:R('advert/index', array(3), 'Widget')}
+    <else/>
+    {:R('advert/index', array(2), 'Widget')}
+    </if>    
+</div>

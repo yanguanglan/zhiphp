@@ -1,0 +1,21 @@
+
+<include file="public:header" />
+<!--主部开始-->
+<div id="main">
+    <div class="w668 fl">
+        <div class="leftinfo">
+            <div id="login_success">	
+                <strong>{$message}</strong><br />
+                </include><a href="{$jumpUrl}">{:L('msg_jump_desc')}</a>
+            </div>
+            <script language="javascript">
+                setTimeout("location.href='{$jumpUrl}';",{$waitSecond}*1000);
+            </script>
+        </div>
+    </div>
+    <div class="w300 fr">
+        <include file="public:find" />
+    </div>
+</div>
+<!--主部结束-->
+<include file="public:footer" />

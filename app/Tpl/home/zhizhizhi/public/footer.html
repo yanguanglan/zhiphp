@@ -1,0 +1,67 @@
+	<div class="main_content">
+        <div id="main">
+            {:R('advert/index', array(17), 'Widget')}
+        </div>
+    </div>
+	</div>
+	<!--尾部开始-->
+	<div id="footer" class="clearfix">
+		<div id="wrap">
+				<div class="bottombar">
+				<ul class="clearfix">
+					<li class="w360">
+					<h2>第一次访问{:C("pin_site_name")}？</h2>
+					<div>{$about_content}<a href="about.html">【阅读更多】</a></div>
+					</li>
+					<li>
+					<h2>关于我们</h2>
+					<ul>
+										<li><a target="_blank" href="about.html">关于我们</a></li>
+										<li><a target="_blank" href="contact.html">联系我们</a></li>
+										<li><a target="_blank" href="friends.html">合作伙伴</a></li>
+										<li><a target="_blank" href="flink.html">友情链接</a></li>
+										<li><a target="_blank" href="partner.html">商务合作</a></li>
+					</ul>
+					</li>
+				</ul>
+				</div>
+				<div class="foot">
+					<div class="ml10">© copyright 2010-2013 {:C("pin_site_name")}. All rights reserved. {:C("pin_site_icp")}{:C("pin_statistics_code")}</div>
+				</div>			
+			</div>
+</div>
+
+
+	<!--尾部结束-->
+<script>
+var PINER = {
+    root: "__ROOT__",
+    uid: "<?php echo $visitor['id'];?>", 
+    async_sendmail: "<?php echo $async_sendmail;?>",
+    config: {
+        wall_distance: "<?php echo C('pin_wall_distance');?>",
+        wall_spage_max: "<?php echo C('pin_wall_spage_max');?>"
+    },
+    //URL
+    url: {}
+};
+//语言项目
+var lang = {};
+<volist name=":L('js_lang')" id="val">lang.{$key} = "{$val}";</volist>
+</script>    
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.tools.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.masonry.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/formvalidator.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery/plugins/jquery.stickyscroll.js"></script>
+<script type="text/javascript" src="__STATIC__/js/fileuploader.js"></script>
+<script type="text/javascript" src="__STATIC__/js/zhiphp.js"></script>
+<script type="text/javascript" src="__STATIC__/js/front.js"></script>
+<script type="text/javascript" src="__STATIC__/js/dialog.js"></script>
+<script type="text/javascript" src="__STATIC__/js/wall.js"></script>
+<script type="text/javascript" src="__STATIC__/js/comment.js"></script>
+<script type="text/javascript" src="__STATIC__/js/user.js"></script>
+<script type="text/javascript" src="__STATIC__/js/setting.js"></script>
+<script type="text/javascript" src="__STATIC__/js/brivio.validate.js"></script>
+</body>
+</html>    

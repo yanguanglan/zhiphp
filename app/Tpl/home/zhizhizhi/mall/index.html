@@ -1,0 +1,46 @@
+<include file="public:header" />
+	<!--主部开始-->
+	<div id="main">
+		<div class="content mallcont clearfix">			
+            <div class="localtion mb10">
+                <span>
+                    您的位置： 
+                    <a class="orange" href="">值值值</a> 
+                    » 购物网站大全 – 网购网站大全、商城导航 – shop.zhizhizhi.com
+                </span>
+            </div>	
+			
+			<div class="malltop mb10 clearfix">
+				<h1>商家导航</h1>
+				<ul>
+                    <volist name="list" id="val">
+                        <li><a href="#mall_{$val.id}">{$val.title}</a>
+                        <if condition="$i lt count($list)">
+                        <em>|</em>
+                        </if>
+                        </li>
+                    </volist>
+				</ul>
+			</div>
+            <div class="mallnav">
+                <volist name="list" id="val">
+                <dl class="clearfix" id="mall_{$val.id}">
+                    <dt>{$val.title}</dt>
+                    <volist name="val['child']" id="v">
+					<dd>
+						<div>
+							<a class="mallnav-pic" href="{:u('mall/info',array('id'=>$v['id']))}">
+                                <img src="{:attach($v['img'],'mall')}"/>
+                            </a>
+							<a class="mallnav-title" href="{:mall_url($v)}" target="_blank">京东商城</a>
+						</div>
+					</dd>
+                    </volist>
+                </dl>
+                </volist>	
+            </div>			
+		</div>		
+	</div>
+	<!--主部结束-->	
+<!--内容页开始-->
+<include file="public:footer" />

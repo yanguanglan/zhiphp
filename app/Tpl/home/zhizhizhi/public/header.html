@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <title>{$page_seo.title}</title>    
+    <meta name="keywords" content="{$page_seo.keywords}" />
+    <meta name="description" content="{$page_seo.description}" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__ROOT__static/js/jquery/jquery.js" />
+    
+	<link href="{:THEME_PATH}public/css/base.css" rel="stylesheet" type="text/css" />
+	<link href="{:THEME_PATH}public/css/style.css" rel="stylesheet" type="text/css" />
+    <load href="{:THEME_PATH}public/js/common.js" />
+    
+	
+    <load href="__ROOT__static/js/jquery/plugins/jquery.cookie.js" />
+    <load href="__ROOT__static/js/common.js" />	
+   
+	<script type="text/javascript">
+    <if condition="$visitor">
+    var IS_LOGIN=true;
+    <else/>
+    var IS_LOGIN=false;
+    </if>    
+    var def={$def};    
+	$(function($){
+	  $(".headnav-left h3").mouseover(function(){
+		$('.catelist').css('visibility','visible');
+	  });
+	  $(".headnav-left h3").mouseout(function(){
+		$('.catelist').css('visibility','hidden');
+	  });
+	  $(".catelist").mouseover(function(){
+		$(this).css('visibility','visible');
+	  });
+	  $(".catelist").mouseout(function(){
+		$(this).css('visibility','hidden');
+	  });
+	});
+	</script>
+</head>
+<body>
+<div id="wrap">	
+	<div class="sidemenu">
+		<ul>
+            <li class="menu-index"><a href="{:u('post_cate/index',array('id'=>1))}">快速导航</a></li>
+            <li class="menu-sub"><a href="{:u('post_cate/index',array('id'=>2))}">特色推荐</a></li>                
+            <volist name="main_nav_list" id="val">
+                <li class="menu-sub"><a href="{$val.link}">{$val.name}</a></li>
+            </volist>
+			<li class="menu-index">
+                <if condition="empty($visitor)">
+                <a href="{:u('user/login')}" rel="nofollow">登录
+                <a href="{:u('user/register')}" rel="nofollow">注册</a></li>
+              <else/>
+                    <a href="{:u('user/index')}">个人中心</a>
+                    <a href="{:u('user/logout')}">注销</a>
+              </if>
+            </li>
+			<volist name="recommend_cate" id="val">
+                <li class="menu-sub"><a href="{:u('post_cate/index',array('id'=>$val['id']))}">{$val.name}</a></li>
+            </volist>
+		</ul>
+	</div>
+
+	<!--头部开始-->
+	<div id="header">
+		<div class="topnav clearfix">
+		  <div class="topnav-left fl">
+			<ul id="menu-top-nav" class="menu">
+			  <li><a href="about.html"><b>关于</b></a></li>
+              <if condition="empty($visitor)">
+			  <li class="loginbtn">
+                <a href="{:u('user/login')}" rel="nofollow">登录</a>
+              </li>
+			  <li><a href="{:u('user/register')}" target="_blank" rel="nofollow">注册</a></li>
+              <else/>
+                <li>
+                    {$visitor.username}欢迎您！
+                    <a href="{:u('user/index')}">个人中心</a>
+                    <a href="{:u('user/logout')}">注销</a>
+                </li>
+              </if>
+			</ul>
+		  </div>
+		  <div class="topnav-right fr">
+			<ul>
+			  <li style="margin-right:170px;" onclick="AddFavorite('http://{$server['HTTP_HOST']}__ROOT__','{:C('pin_site_name')}')">收藏我吧，不会有错</li>
+			  <li><a href="{:u('post/submit')}" target="_blank">我要爆料</a></li>			  
+              <li><a href="{:u('mall/index')}" target="_blank">商家导航</a></li>
+			</ul>
+		  </div>
+		</div>
+		
+		<div class="headlogo clearfix">
+			<div class="headlogo-left fl"><a href="__ROOT__"><img src="{:THEME_PATH}public/images/logo.jpg"/></a></div>
+			<div class="headlogo-right fr">
+                <img src="{:THEME_PATH}public/images/right-slogan.jpg" width="500" height="60"/>
+            </div>
+		</div>		
+		<div class="headnav clearfix">
+			
+			<div class="headnav-left fl" style="z-index: 1000;">
+				<h3>全部商品分类</h3>
+				<div class="catelist">
+				  <ul>           
+                    <volist name="all_post_cate_list" id="v">
+                    <li><a href="{:U('post_cate/index',array('id'=>$v['id']))}">» {$v.name}</a></li>
+                    </volist>       
+				  </ul>
+				</div>
+			</div>
+			<div class="headnav-right fl">
+				<ul>
+					<li <if condition="MODULE_NAME eq 'index'">class="current"</if>><a href="__ROOT__">首 页</a></li>
+                    <li <if condition="MODULE_NAME eq 'post_cate' and ACTION_NAME eq 'index' and $req['id'] eq 2">class="current"</if>>
+                        <a href="{:u('post_cate/index',array('id'=>2))}">特色推荐</a>
+                        <ul class="sub_menu">
+                        <volist name="tese_cate" id="val">
+                            <li><a href="{:u('post_cate/index',array('id'=>$val['id']))}">{$val.name}</a></li>
+                        </volist>
+                        </ul>
+                    </li>
+                    <volist name="main_nav_list" id="val">
+                        <li data="{:'http://'.$server['SERVER_NAME'].$server['REQUEST_URI']}" <if condition="strpos('http://'.$server['SERVER_NAME'].$server['REQUEST_URI'],$val['link']) neq false">class="current"</if>><a href="{$val.link}" <if condition="$val['target'] eq 1">target="_blank"</if>>{$val.name}</a></li>
+                    </volist>
+				</ul>
+			</div>			
+		</div>		
+		<div class="headlink clearfix">
+			<dl>
+				<dt>快速访问 »</dt>
+				<dd>
+                <volist name="quick_mall_list" id="v">
+                <a target="_blank" href="{:mall_url($v)}">{$v.title}</a>
+                </volist>
+                </dd>
+			</dl>
+		</div>
+	</div>
+	<!--头部结束-->

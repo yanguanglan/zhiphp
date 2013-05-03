@@ -1,0 +1,70 @@
+<volist name="post_list" id="val">
+  <div class="product mb10">
+    <h2>
+        <a data-id="{$val.id}" href="{:post_url($val)}" target="_blank" <if condition="$val['tcolor']">style="color: {$val.tcolor};"</if>>
+            {$val.title}
+            <span>&nbsp;&nbsp;{$val.prices}</span>
+        </a> 
+    </h2>
+    <div class="postmeta clearfix"> 
+        <span class="fr">
+            <span>
+                <a class="blue J_favs" data-id="{$val.id}" title="加入收藏" rel="nofollow">加入收藏</a>
+            </span> 
+            <span class="comment">
+                <a class="blue" href="{:u('post/index',array('id'=>$val['id']))}#J_messagebox">等你来评论</a>
+            </span>
+        </span> 
+        <span class="date">{:date("Y年m月d日",$val['add_time'])}</span> 
+        <span class="author">{$val.uname} </span> 
+        <span class="folder">
+            <volist name="val['cate_list']" id="c">
+                <a href="{:u('post_cate/index',array('id'=>$c['cate_id']))}" target="_blank">{$c.cate.name}</a>
+                <if condition="$i lt count($val['cate_list'])">,</if>
+            </volist>
+        </span> 
+    </div>
+    <div class="productinfo clearfix">
+        <div class="product-text fl">
+            {:msubstr(strip_tags($val['info']),200)}<a href="{:post_url($val)}" class="blue">[阅读全文]</a>
+        </div>
+        <div class="product-pic fr">
+            <a href="{:post_url($val)}"><img src="{:attach($val['img'],'post')}"/></a>
+        </div>
+    </div>
+    <div class="postinfo clearfix"> 
+        <span class="quicklink fr"> 
+            <a href="{:post_url($val)}" target="_blank" class="link-more">详细图文</a>
+            <a href="{:u('index/go',array('id'=>$val['id']))}" target="_blank" class="link-gobuy" rel="nofollow">去购买 »</a> 
+        </span> 
+        <span class="tag">
+            <volist name="val['tag_list']" id="t">
+            <a href="{:U('tag/index',array('id'=>$t['id']))}">{$t.name}</a>
+            </volist>
+        </span>
+    </div>
+    <div class="comment-rating mt10 clearfix">
+    <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="<literal>{</literal>'bdDes':'{$val.title}','text':'{$val.title}',pic:'http://{$server.HTTP_HOST}__ROOT__data/upload/post/{$val.img}'<literal>}</literal>">
+        <span class="fl" style="display: block;padding-top: 6px;">分享到：</span>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <span class="bds_more"></span>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=758194" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <!-- Baidu Button END -->
+      <div class="thumblock fl"> <span class="fl">请评价：</span>
+        <div class="thumb fl J_worth">
+            <a class="good-icon" title="值" data-id="{$val.id}" data-type="rate_best">{$val.rate_best}</a>
+            <a class="bad-icon" title="不值" data-id="{$val.id}" data-type="rate_bad">{$val.rate_bad}</a>
+        </div>
+        <span class="fl" id="J_rate_result_{$val.id}">
+            {$val["rate_best"]+$val["rate_good"]+$val["rate_bad"]}位网友中的 <i>{$val["rate_best"]+$val["rate_good"]}</i> 位认为值得买！
+        </span> 
+      </div>
+      <div class="pinglun fr"><a href="{:u('post/index',array('id'=>$val['id']))}#J_messagebox">发表评论</a></div>
+    </div>
+  </div>
+</volist>
