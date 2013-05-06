@@ -31,7 +31,7 @@ class cacheAction extends backendAction
                 is_dir(LOG_PATH) && $obj_dir->delDir(LOG_PATH);
                 break;
             case 'js':
-                is_dir(PIN_DATA_PATH . '/static/') && $obj_dir->del(PIN_DATA_PATH . '/static/');
+                is_dir(ZHI_DATA_PATH . '/static/') && $obj_dir->del(ZHI_DATA_PATH . '/static/');
                 break;
         }
         $this->ajaxReturn(1);
@@ -44,7 +44,7 @@ class cacheAction extends backendAction
         is_dir(DATA_PATH) && $obj_dir->del(DATA_PATH);
         is_dir(TEMP_PATH) && $obj_dir->delDir(TEMP_PATH);
         is_dir(LOG_PATH) && $obj_dir->delDir(LOG_PATH);
-        is_dir(PIN_DATA_PATH . '/static/') && $obj_dir->del(PIN_DATA_PATH . '/static/');
+        is_dir(ZHI_DATA_PATH . '/static/') && $obj_dir->del(ZHI_DATA_PATH . '/static/');
         @unlink(RUNTIME_FILE);
         $this->ajaxReturn(1, L('clear_success'));
     }

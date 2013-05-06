@@ -268,7 +268,8 @@ class frontendAction extends baseAction {
         if ($relation) {
             $select = $select->relation($relation);
         }
-        $list = $select->select();        
+        $list = $select->select();     
+        //print_r($list);exit();   
         $this->assign('list', $list);
         $this->assign('page', $pager->show());
         return $list;

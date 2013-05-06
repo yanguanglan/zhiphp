@@ -37,7 +37,7 @@ class message_tplModel extends Model{
      * 获取模板文件
      */
     private function _get_tplfile($alias, $type) {
-        return PIN_DATA_PATH . $type . '_tpl/' . $alias . '.html';
+        return ZHI_DATA_PATH . $type . '_tpl/' . $alias . '.html';
     }
 
     private function _fetch_tpl($alias, $data, $type) {

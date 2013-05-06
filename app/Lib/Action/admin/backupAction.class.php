@@ -41,13 +41,13 @@ class backupAction extends backendAction
                 $backup_tables = isset($_POST['backup_tables']) && $_POST['backup_tables'] ? $_POST['backup_tables'] :
                     $this->error(L('plsease_select') . L('backup_tables'));
 
-                if (is_dir(PIN_DATA_PATH . $this->backup_path . $this->backup_name))
+                if (is_dir(ZHI_DATA_PATH . $this->backup_path . $this->backup_name))
                 {
                     $this->error(L('backup_name') . L('exists'));
                 }
-                mkdir(PIN_DATA_PATH . $this->backup_path . $this->backup_name);
+                mkdir(ZHI_DATA_PATH . $this->backup_path . $this->backup_name);
 
-                if (!is_file(PIN_DATA_PATH . $this->backup_path . $this->backup_name .
+                if (!is_file(ZHI_DATA_PATH . $this->backup_path . $this->backup_name .
                     '/tbl_queue.log'))
                 {
                     //写入队列
@@ -116,7 +116,7 @@ class backupAction extends backendAction
 
     private function _import_vol($sql_file_name)
     {
-        $sql_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name . '/' . $sql_file_name;
+        $sql_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name . '/' . $sql_file_name;
         $sql_str = file($sql_file);
         $sql_str = str_replace("\r", '', implode('', $sql_str));
         $ret = explode(";\n", $sql_str);
@@ -144,7 +144,7 @@ class backupAction extends backendAction
         } 
         import('@.ORG.Dir'); 
         $dir=new Dir();
-        $dir->delDir(PIN_DATA_PATH . $this->backup_path . $_GET['backup'].'/');             
+        $dir->delDir(ZHI_DATA_PATH . $this->backup_path . $_GET['backup'].'/');             
         $this->success(L('operation_success'));
     }
 
@@ -157,7 +157,7 @@ class backupAction extends backendAction
             $this->error(L('plsease_select') . L('backup_name'));
         $file = isset($_GET['file']) && trim($_GET['file']) ? trim($_GET['file']) : $this->
             error(L('plsease_select') . L('backup_file'));
-        $sql_file = PIN_DATA_PATH . $this->backup_path . $backup_name . '/' . $file;
+        $sql_file = ZHI_DATA_PATH . $this->backup_path . $backup_name . '/' . $file;
         if (file_exists($sql_file))
         {
             header('Content-type: application/unknown');
@@ -177,7 +177,7 @@ class backupAction extends backendAction
     {
         $vols = array(); //所有的卷
         $bytes = 0;
-        $vol_path = PIN_DATA_PATH . $this->backup_path . $backup_name . '/';
+        $vol_path = ZHI_DATA_PATH . $this->backup_path . $backup_name . '/';
         if (is_dir($vol_path))
         {
             if ($handle = opendir($vol_path))
@@ -208,20 +208,20 @@ class backupAction extends backendAction
     private function _get_backups()
     {
         $backups = array(); //所有的备份
-        if (is_dir(PIN_DATA_PATH . $this->backup_path))
+        if (is_dir(ZHI_DATA_PATH . $this->backup_path))
         {
-            if ($handle = opendir(PIN_DATA_PATH . $this->backup_path))
+            if ($handle = opendir(ZHI_DATA_PATH . $this->backup_path))
             {
                 while (($file = readdir($handle)) !== false)
                 {
-                    if ($file{0} != '.' && filetype(PIN_DATA_PATH . $this->backup_path . $file) == 'dir')
+                    if ($file{0} != '.' && filetype(ZHI_DATA_PATH . $this->backup_path . $file) == 'dir')
                     {
                         $backup['name'] = $file;
-                        $backup['date'] = filemtime(PIN_DATA_PATH . $this->backup_path . $file) - date('Z');
+                        $backup['date'] = filemtime(ZHI_DATA_PATH . $this->backup_path . $file) - date('Z');
                         $backup['date_str'] = date('Y-m-d H:i:s', $backup['date']);
                         $backup['vols'] = $this->_get_vols($file);
                         $end_vol = end($backup['vols']);
-                        $backup['total_size'] =round($this->_get_dir_size(PIN_DATA_PATH . $this->backup_path . $file)/1024,2);
+                        $backup['total_size'] =round($this->_get_dir_size(ZHI_DATA_PATH . $this->backup_path . $file)/1024,2);
                         $backups[] = $backup;
                     }
                 }
@@ -399,7 +399,7 @@ class backupAction extends backendAction
      */
     private function _make_backup_name()
     {
-        $backup_path = PIN_DATA_PATH . '/data/backup/';
+        $backup_path = ZHI_DATA_PATH . '/data/backup/';
         $today = date('Ymd_', time());
         $today_backup = array(); //保存今天已经备份过的
         if (is_dir($backup_path))
@@ -437,7 +437,7 @@ class backupAction extends backendAction
      */
     private function _put_tbl_queue($tables)
     {
-        return file_put_contents(PIN_DATA_PATH . $this->backup_path . $this->backup_name .
+        return file_put_contents(ZHI_DATA_PATH . $this->backup_path . $this->backup_name .
             '/tbl_queue.log', "<?php return " . var_export($tables, true) . ";\n?>");
     }
 
@@ -446,7 +446,7 @@ class backupAction extends backendAction
      */
     private function _get_tbl_queue()
     {
-        $tbl_queue_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name .
+        $tbl_queue_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name .
             '/tbl_queue.log';
         if (!is_file($tbl_queue_file))
         {
@@ -462,7 +462,7 @@ class backupAction extends backendAction
      */
     private function _drop_tbl_queue()
     {
-        $tbl_queue_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name .
+        $tbl_queue_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name .
             '/tbl_queue.log';
         return @unlink($tbl_queue_file);
     }
@@ -472,7 +472,7 @@ class backupAction extends backendAction
      */
     private function _set_vol($vol)
     {
-        $log_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
+        $log_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
         return file_put_contents($log_file, $vol);
     }
 
@@ -481,7 +481,7 @@ class backupAction extends backendAction
      */
     private function _get_vol()
     {
-        $log_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
+        $log_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
         if (!is_file($log_file))
         {
             return 0;
@@ -495,7 +495,7 @@ class backupAction extends backendAction
      */
     private function _drop_vol()
     {
-        $log_file = PIN_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
+        $log_file = ZHI_DATA_PATH . $this->backup_path . $this->backup_name . '/vol.log';
         return @unlink($log_file);
     }
 
@@ -504,7 +504,7 @@ class backupAction extends backendAction
      */
     private function _sava_sql($vol)
     {
-        return file_put_contents(PIN_DATA_PATH . $this->backup_path . $this->backup_name .
+        return file_put_contents(ZHI_DATA_PATH . $this->backup_path . $this->backup_name .
             '/' . $this->backup_name . '_' . $vol . '.sql', $this->dump_sql);
     }
 

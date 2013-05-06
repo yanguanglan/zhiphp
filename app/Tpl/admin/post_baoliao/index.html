@@ -36,7 +36,7 @@
                 <th width=25><input type="checkbox" id="checkall_t" class="J_checkall"></th>
                 <th><span data-tdtype="order_by" data-field="id">ID</span></th>                
                 <th align="left"><span data-tdtype="order_by" data-field="title">{:L('title')}</span></th>
-                <th width="200">链接</th>
+                <th width="400">链接</th>
                 <th>类型</th>
                 <th width=100>发布人</th>
                 <th width=200>时间</th>
@@ -48,11 +48,10 @@
             <tr>
                 <td align="center">{$p*20-20+$i}</td>
                 <td align="center"><input type="checkbox" class="J_checkitem" value="{$val.id}"></td>
-                <td align="center">{$val.id}</td>
-                
+                <td align="center">{$val.id}</td>                
                 <td align="left">
                     <span data-tdtype="edit" data-field="title" data-id="{$val.id}" class="tdedit" style="color:{$val.colors};">{$val.title}</span></td>
-                <td align="center"><strong>{$val.url}</strong></td>   
+                <td align="center"><strong><a href="{$val.url}" target="_blank">{:msubstr($val["url"],40)}</a></strong></td>   
                 <td align="center">{:get_baoliao_type($val['type'])}</td>             
 				<td align="center">
                 <if condition="empty($val['email'])">

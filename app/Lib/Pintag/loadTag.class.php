@@ -16,7 +16,7 @@ class loadTag {
     }
 
     public function js($options) {
-        $path = PIN_DATA_PATH . 'static/' . md5($options['href']) . '.js';
+        $path = ZHI_DATA_PATH . 'static/' . md5($options['href']) . '.js';
         $statics_url = C('pin_statics_url') ? C('pin_statics_url') : './static';
         if (!is_file($path)||true) {
             //静态资源地址
@@ -28,6 +28,6 @@ class loadTag {
             }
             file_put_contents($path, $this->jm->minify($content));
         }
-        echo ( '<script type="text/javascript" src="' . __ROOT__ . 'data/static/' . md5($options['href']) . '.js?' . PIN_RELEASE . '"></script>');
+        echo ( '<script type="text/javascript" src="' . __ROOT__ . 'data/static/' . md5($options['href']) . '.js?' . ZHI_RELEASE . '"></script>');
     }
 }

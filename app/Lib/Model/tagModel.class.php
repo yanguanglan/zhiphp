@@ -6,8 +6,8 @@ class tagModel extends Model
     {
         vendor('pscws4.pscws4', '', '.class.php');
         $pscws = new PSCWS4();
-        $pscws->set_dict(PIN_DATA_PATH . 'scws/dict.utf8.xdb');
-        $pscws->set_rule(PIN_DATA_PATH . 'scws/rules.utf8.ini');
+        $pscws->set_dict(ZHI_DATA_PATH . 'scws/dict.utf8.xdb');
+        $pscws->set_rule(ZHI_DATA_PATH . 'scws/rules.utf8.ini');
         $pscws->set_ignore(true);
         $pscws->send_text($title);
         $words = $pscws->get_tops($num);

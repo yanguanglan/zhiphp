@@ -36,7 +36,7 @@ class indexAction extends backendAction {
         }
         $this->assign('message', $message);
         $system_info = array(
-            'ZhiPHP_version' => PIN_VERSION . ' RELEASE '. PIN_RELEASE .' [<a href="http://www.zhiphp.com/" class="blue" target="_blank">查看最新版本</a>]',
+            'ZhiPHP_version' => ZHI_VERSION . ' RELEASE '. ZHI_RELEASE .' [<a href="http://www.zhiphp.com/" class="blue" target="_blank">查看最新版本</a>]',
             'server_domain' => $_SERVER['SERVER_NAME'] . ' [ ' . gethostbyname($_SERVER['SERVER_NAME']) . ' ]',
             'server_os' => PHP_OS,
             'web_server' => $_SERVER["SERVER_SOFTWARE"],
@@ -62,7 +62,7 @@ class indexAction extends backendAction {
             if(session('verify') != md5($verify_code)&&C('pin_captcha_status')){
                 $this->error(L('verify_code_error'));
             }
-            $admin = M('admin')->where(array('username'=>$username, 'status'=>1))->find();
+            $admin = M('admin')->where(array('username'=>$username, 'status'=>1))->find();            
             if (!$admin) {
                 $this->error(L('admin_not_exist'));
             }
