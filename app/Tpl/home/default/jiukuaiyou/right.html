@@ -1,0 +1,14 @@
+<div class="new_cmt_list">
+    <div class="title">TA们在说 <a href="">更多>></a></div>
+    <div class="list">
+        <div class="item">
+            <volist name="cmt_list" id="item">
+                <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="{:attach($item['img'],MODULE_NAME)}"/></a>
+                <div class="fr">
+                    <a href="">{$item.cmt.uname}</a>:
+                    {$item.cmt.info}
+                </div>
+            </volist>
+        </div>    
+    </div>
+</div>

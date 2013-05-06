@@ -1,0 +1,51 @@
+<include file="public:header" />
+<load href="{:THEME_PATH}public/css/jiukuaiyou.css"/>
+<!--内容页开始-->
+<div class="main_content">
+    <!--主部开始-->
+    <div id="main" class="J_main_page">
+        <div class="contentbox clearfix">    
+            <div class="contentbox_l fl"> 
+                <div class="clearfix crumbBox">当前位置:<a href="/">首页</a>>><strong>九块邮</strong></div>                    
+                <div class="showinfo clearfix">
+                    <volist name="list" id="item">
+                        <div class="jky_item <if condition='$i%3 eq 0'> no_mr</if>">
+                            <h3>
+                                <i class="orig" title="{$item.orig.title}" style="background-image: url('{:attach($item['orig']['img'],'jky_orig')}');"></i>
+                                <if condition="$item['is_duxiang']">
+                                    <span class="green"></span>    
+                                </if>
+                                <a class="inform_title" href="{:u('jiukuaiyou/detail',array('id'=>$item['id']))}" target="_blank">
+                                    <i class="tao-d" title="九块邮"></i>{$item.title} 原价{$item.mprice}元 促销价{$item.price}元
+                                </a>
+                            </h3>
+                            <div class="pic">
+                                <a href="{:u('jiukuaiyou/detail',array('id'=>$item['id']))}" target="_blank">                                    
+								   <img class="img" alt="{$item.title} 原价{$item.mprice}元 促销价{$item.price}元" src="http://s1.juancdn.com/bao/130505/r/p/5185fd09f2778_350x350.jpg_220x220.jpg"/>
+                                </a>
+                            </div>
+                            <div class="buy_mask"></div>
+                            <div class="buy_state clearfix">
+                                <span class="begin_time">开始：{:date("m月d日H时i分")}</span>
+                            </div>
+                            <div class="buy_content">
+                                <a target="_blank" href="{:U('jiukuaiyou/go',array('id'=>$item['id']))}" class="buy_action clearfix">
+                                    <span class="price"><em>￥</em>9<span>.90</span>
+                                    </span>
+                                    <span class="oldprice_1">￥{$item.price}</span>
+                                    <b class="btn"></b>
+                                </a>
+                            </div>                                 
+                        </div>
+                    </volist>
+                </div>
+                <div class="page">{$page}</div>
+            </div>
+            <div class="contentbox_r fr">
+                <include file="right" />
+            </div>
+        </div>
+    </div>
+    <!--主部结束-->
+</div>	
+<include file="public:footer" />
