@@ -15,7 +15,7 @@
                             <volist name="list" id="v">
                             <tr>
                                 <td>{:L($v['action'])}积分,奖励{$v.score}积分</td>
-                                <td align="right">{:date('Y-m-d H:i:s',$v['add_time'])}</td>
+                                <td align="right">{:fdate($v['add_time'])}</td>
                             </tr>
                             </volist>
                             </table>

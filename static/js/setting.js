@@ -23,7 +23,7 @@
                 timeFormat : "24"
             });
             $('#J_upload_avatar').uploader({
-                action_url: PINER.root + '/?m=user&a=upload_avatar',
+                action_url: PINER.root + '?m=user&a=upload_avatar',
                 input_name: 'avatar',
                 onComplete: function(id, fileName, result){
                     if(result.status == '1'){
@@ -48,7 +48,7 @@
         //自定义封面
         cover: function(){
             $('#upload_cover').uploader({
-                action_url: PINER.root + '/?m=user&a=upload_cover',
+                action_url: PINER.root + '?m=user&a=upload_cover',
                 input_name: 'cover',
                 onSubmit: function(id, fileName){
                     $.ZhiPHP.tip({content:lang.uploading_cover, time:0,  icon:'wait'});
@@ -62,7 +62,7 @@
             });
             //取消图片
             $('#J_cancle_cover').live('click', function(){
-                $.getJSON(PINER.root + '/?m=user&a=cancle_cover', function(result){
+                $.getJSON(PINER.root + '?m=user&a=cancle_cover', function(result){
                     if(result.status == '1'){
                         window.location.reload();
                     }
@@ -87,7 +87,7 @@
                 var to_id = $(this).attr('data-toid'),
                     content = $('#J_msg_content').val();
                 $.ajax({
-                    url: PINER.root + '/?m=message&a=publish',
+                    url: PINER.root + '?m=message&a=publish',
                     type: 'POST',
                     data: {
                         to_id: to_id,
@@ -111,7 +111,7 @@
             //单个删除
             $('#J_msg_list').find('.J_ml_del').live('click', function(){
                 var mid = $(this).attr('data-mid');
-                $.getJSON(PINER.root + '/?m=message&a=del', {mid:mid}, function(result){
+                $.getJSON(PINER.root + '?m=message&a=del', {mid:mid}, function(result){
                     if (result.status == '1') {
                         $('#ml_'+mid).slideUp('fast', function(){
                             $(this).remove();
@@ -131,7 +131,7 @@
             $('#J_search_target').live('click', function(){
                 var search_uname = $('#J_search_uname').val();
                 $.ajax({
-                    url: PINER.root + '/?m=message&a=search_target',
+                    url: PINER.root + '?m=message&a=search_target',
                     type: 'POST',
                     data: {
                         search_uname: search_uname

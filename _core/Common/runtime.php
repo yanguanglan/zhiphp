@@ -53,7 +53,7 @@ if(!IS_CLI) {
         }else {
             $_root = dirname(_PHP_FILE_);
         }
-        define('__ROOT__',  rtrim($_root,"/")."/");
+        define('__ROOT__',  rtrim($_root,"\/")."/");
     }
     //支持的URL模式
     define('URL_COMMON',      0);   //普通模式

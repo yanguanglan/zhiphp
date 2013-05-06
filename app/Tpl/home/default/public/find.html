@@ -54,50 +54,57 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 </div>
 <script type="text/javascript">
 $(function() {       
-    if($.browser.safari){
-        var orig_top=$('.J_fixed').offset().top;
-        var offset=40;
-        $(window).scroll(function(){
-            var $jfix=$('.J_fixed');
-            var scroll=$('body').scrollTop(); 
-            var top=$jfix.offset().top-orig_top+40;
-            var max_scroll=$('#J_waterfall').height()+400;
-            //console.log('scroll:'+scroll+',top:'+top);
-//            console.log('bottom:'+(top+$jfix.height())+",max_scroll:"+max_scroll);
-            
-            if(scroll<=orig_top){
-                $jfix.css({
-                    'position':'static'               
-                });
+    var orig_top=$('.J_fixed').offset().top;
+    
+    var offset=40;
+    var $jfix=$('.J_fixed');
+    var ajax_num=0;
+    function setJfixCss(){
+        $jfix.css({
+            'position':'fixed',
+            'top':offset+'px',
+            'bottom':'auto',
+            'right':'auto'
+        });         
+    }
+    function slidingFunction(){        
+        if($(".J_main_page .contentbox_l").height()<$(".J_main_page .contentbox_r").height())return;
+        if($('#J_wall_loading').css('display')=='block'){
+            ajax_num++;
+            if(ajax_num>1){
+                setJfixCss();   
             }
-            else if(scroll>top&&$jfix.css('position')!='absolute'){
-                if(scroll<max_scroll){
-                    $jfix.css({
-                        'position':'fixed',
-                        'top':offset+'px',
-                        'bottom':'auto',
-                        'right':'auto'
-                    });                
-                }else{                
-                    $jfix.css({
-                        'position':'absolute',
-                        'bottom':'20px',
-                        'right':'20px',
-                        'top':'auto'
-                    });   
-                }            
-            }
-            else if(scroll<top&&$jfix.css('position')=='absolute'){
+            return;
+        }
+        
+        var scroll=document.body.scrollTop|| document.documentElement.scrollTop; 
+        var top=$jfix.offset().top-orig_top+40;
+        var max_scroll=$('.J_main_page').height()+400;
+     
+        if(scroll<=orig_top){
+            $jfix.css({
+                'position':'static'             
+            });   
+        }
+        else if(scroll>top&&$jfix.css('position')!='absolute'){            
+            if($jfix.offset().top+$jfix.height()<=$('.J_main_page').offset().top+$('.J_main_page').height()){                    
+                setJfixCss();     
+            }else{
                 $jfix.css({
-                    'position':'fixed',
-                    'top':offset+'px',
-                    'bottom':'auto',
-                    'right':'auto'
-                });  
-            }      
-        });          
-    }else{
-        $('.J_fixed').stickyScroll({bottomBoundary: 1116,topBoundary:270});
-    }  
+                    'position':'absolute',
+                    'bottom':'20px',
+                    'right':'20px',
+                    'top':'auto'
+                });   
+            }   
+        }
+        else if(scroll<top){
+            setJfixCss();
+        }         
+    }
+    
+    jQuery(window).bind("scroll", slidingFunction);
+	jQuery(window).bind("resize", slidingFunction);
+    slidingFunction();
 });
 </script>

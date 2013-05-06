@@ -29,7 +29,7 @@
         //列表
         list: function(){
             var id = $(this.settings.container).attr('data-id');
-            //this.load(PINER.root + '/?m='+$.ZhiPHP.comment.settings.m+'&a=comment_list&id='+id);
+            //this.load(PINER.root + '?m='+$.ZhiPHP.comment.settings.m+'&a=comment_list&id='+id);
             var s = $.ZhiPHP.comment.settings;
             $('li', $(s.page_list)).live({
                 mouseover: function(){
@@ -130,7 +130,7 @@
                     return false;
                 }
                 $.ajax({
-                    url: PINER.root + '/?m='+$.ZhiPHP.comment.settings.m+'&a=comment',
+                    url: PINER.root + '?m='+$.ZhiPHP.comment.settings.m+'&a=comment',
                     type: 'POST',
                     data: {
                         id: id,

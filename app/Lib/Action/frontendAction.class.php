@@ -138,7 +138,7 @@ class frontendAction extends baseAction {
         $count=$mod->where($where)->count();
         $count > $s_list_rows && $show_sp = 1;
         $pager = new Page($count, $list_rows);
-        $pager->setConfig('theme','%first% %upPage% %linkPage% %downPage% %end%');
+        $pager->setConfig('theme','%upPage% %first% %linkPage% %end% %downPage%');
         
         $first_row = $pager->firstRow + $s_list_rows * ($sp - 1);
         $items_list = $mod->relation(true)->where($where)

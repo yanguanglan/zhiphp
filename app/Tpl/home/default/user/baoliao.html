@@ -32,7 +32,7 @@
                                 <td>{$v.title}</td>
                                 <td><a href="{$v['url']}" title="{$v['url']}" target="_blank">{:msubstr($v['url'],20)}</a></td>
                                 <td>{$v.info}</td>
-                                <td>{:date('Y-m-d',$v['add_time'])}</td>
+                                <td>{:fdate($v['add_time'])}</td>
                             </tr>
                             </volist>
                             </tbody>
@@ -52,7 +52,7 @@
                             <volist name="list" id="v">
                             <tr>
                                 <td>{$v.info}</td>
-                                <td align="right">{:date('Y-m-d',$v['add_time'])}</td>
+                                <td align="right">{:fdate($v['add_time'])}</td>
                             </tr>
                             </volist> 
                         </empty>            
@@ -63,7 +63,7 @@
                             <volist name="list" id="v">
                             <tr>
                                 <td>{$v.info}</td>
-                                <td align="right">{:date('Y-m-d',$v['add_time'])}</td>
+                                <td align="right">{:fdate($v['add_time'])}</td>
                             </tr>
                             </volist> 
                         </empty>    

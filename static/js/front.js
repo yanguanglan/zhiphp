@@ -100,7 +100,7 @@
     $.ZhiPHP.tool = {
         //发送邮件
         sendmail: function() {
-            return PINER.async_sendmail ? ($.get(PINER.root + '/?a=send_mail'), !0) : !1;
+            return PINER.async_sendmail ? ($.get(PINER.root + '?a=send_mail'), !0) : !1;
         },
         //信息提示
         msgtip: function() {
@@ -109,7 +109,7 @@
                 var is_update = !1;
                 var update = function() {
                     is_update = !0;
-                    $.getJSON(PINER.root + '/?m=user&a=msgtip', function(result){
+                    $.getJSON(PINER.root + '?m=user&a=msgtip', function(result){
                         if(result.status == 1){
                             var fans = parseInt(result.data.fans),
                                 atme = parseInt(result.data.atme),

@@ -5,7 +5,7 @@
             <h3 class="fl">
                 <a href="{:post_url($val)}" target="_blank" <if condition="$val['tcolor']">style="color: {$val.tcolor};"</if>>{$val.title}<span>&nbsp;&nbsp;{$val.prices}</span></a>
             </h3>
-            <div class="showitemTime">{:date("m-d H:i",$val['add_time'])}</div>
+            <div class="showitemTime">{:fdate($val['add_time'])}</div>
         </div>
         <div style="width: 684px;height: 100%;">
             <div class="showcont_l fl">

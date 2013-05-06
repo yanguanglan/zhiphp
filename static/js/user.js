@@ -33,7 +33,7 @@
                 if(!$.ZhiPHP.dialog.islogin()) return !1;
                 var self = $(this),
                     uid = $(this).parent().attr('data-uid');
-                $.getJSON(PINER.root + '/?m=user&a=follow', {uid:uid}, function(result){
+                $.getJSON(PINER.root + '?m=user&a=follow', {uid:uid}, function(result){
                     if(result.status == 1){
                         result.data == 1 ? self.parent().html(s.add_ok_html) : self.parent().html(s.add_all_html);
                         $("body").data(uid, false);
@@ -51,7 +51,7 @@
                 if(!confirm(lang.confirm_unfollow)) return !1;
                 var self = $(this),
                     uid = $(this).parent().attr('data-uid');
-                $.getJSON(PINER.root + '/?m=user&a=unfollow', {uid:uid}, function(result){
+                $.getJSON(PINER.root + '?m=user&a=unfollow', {uid:uid}, function(result){
                     if(result.status == 1){
                         self.parent().html(s.add_btn_html);
                         $("body").data(uid, false);
@@ -105,7 +105,7 @@
                         $("#J_card_info").html($('body').data(uid));
                     }else{
                         n = setTimeout(function(){
-                            $.getJSON(PINER.root + '/?m=space&a=card', {uid:uid}, function(result){
+                            $.getJSON(PINER.root + '?m=space&a=card', {uid:uid}, function(result){
                                 if(result.status == 1){
                                     $("#J_card_info").html(result.data);
                                     $("body").data(uid, result.data);
@@ -159,6 +159,7 @@
         },
         //绑定表单
         bind_form: function(){
+            
             if ($('#J_bind_form')) {
                 $.formValidator.initConfig({formid:'J_bind_form',autotip:true});
                 $('#J_email').formValidator({onshow:' ',onfocus:lang.email_tip, oncorrect: ' '})
@@ -166,7 +167,7 @@
                 .regexValidator({regexp:'email',datatype:'enum',onerror:lang.email_format_error})
                 .ajaxValidator({
                     type: 'get',
-                    url: PINER.root + '/?m=user&a=ajax_check',
+                    url: PINER.root + '?m=user&a=ajax_check',
                     data: 'type=email',
                     datatype: 'json',
                     async:'false',
@@ -183,7 +184,7 @@
                 .inputValidator({max:20,onerror:lang.username_tip})
                 .ajaxValidator({
                     type: 'get',
-                    url: PINER.root + '/?m=user&a=ajax_check',
+                    url: PINER.root + '?m=user&a=ajax_check',
                     data: 'type=username',
                     datatype: 'json',
                     async:'false',
@@ -218,7 +219,7 @@
             .regexValidator({regexp:'email',datatype:'enum',onerror:lang.email_format_error})
             .ajaxValidator({
                 type: 'get',
-                url: PINER.root + '/?m=user&a=ajax_check',
+                url: PINER.root + '?m=user&a=ajax_check',
                 data: 'type=email',
                 datatype: 'json',
                 async:'false',
@@ -234,7 +235,7 @@
             .inputValidator({max:20,onerror:lang.username_tip})
             .ajaxValidator({
                 type: 'get',
-                url: PINER.root + '/?m=user&a=ajax_check',
+                url: PINER.root + '?m=user&a=ajax_check',
                 data: 'type=username',
                 datatype: 'json',
                 async:'false',

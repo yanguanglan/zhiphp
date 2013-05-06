@@ -7,7 +7,7 @@ class settingAction extends backendAction {
         $this->_mod = D('setting');
     }
 
-    public function index() {
+    public function index() {        
         $type = $this->_get('type', 'trim', 'index');
         $this->display($type);
     }
@@ -33,11 +33,16 @@ class settingAction extends backendAction {
         
         foreach ($setting as $key => $val) {
             $val = is_array($val) ? serialize($val) : $val;
-            $this->_mod->where(array('name' => $key))->save(array('data' => $val));
+            
+            if($this->_mod->where(array('name' => $key))->find()){
+                $this->_mod->where(array('name' => $key))->save(array('data' => $val));
+            }else{
+                $this->_mod->add(array('name'=>$key,'data'=>$val));
+            }
         }                
         $type = $this->_post('type', 'trim', 'index');
-        if(!unlink(DATA_PATH."setting.php")){
-            $this->error(DATA_PATH."setting.php文件无法删除，请检查文件权限");    
+        if(file_exists(DATA_PATH."setting.php")){
+            !unlink(DATA_PATH."setting.php")&&$this->error(DATA_PATH."setting.php文件无法删除，请检查文件权限");    
         }  		
         $this->success(L('operation_success'));
     }

@@ -44,7 +44,7 @@
                 var self = $(this),
                     pl = self.parents(s.pl_unit),
                     uid = pl.attr('data-uid');
-                $.getJSON(PINER.root + '/?m=user&a=unfollow', {uid:uid}, function(result){
+                $.getJSON(PINER.root + '?m=user&a=unfollow', {uid:uid}, function(result){
                     if(result.status == 1){
                         pl.remove();
                     }else{
@@ -61,7 +61,7 @@
                 if(!confirm(lang.confirm_delfans)) return !1;
                 var self = $(this),
                     uid = self.attr('data-uid');
-                $.getJSON(PINER.root + '/?m=user&a=delfans', {uid:uid}, function(result){
+                $.getJSON(PINER.root + '?m=user&a=delfans', {uid:uid}, function(result){
                     if(result.status == 1){
                         self.parents(s.pl_unit).remove();
                     }else{

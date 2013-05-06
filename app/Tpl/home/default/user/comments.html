@@ -38,7 +38,7 @@
                                         <a title="{$val.post.title}" target="_blank" href="{:u('post/index',array('id'=>$val['post_id']))}" class="label-merchant-services"> 
                                             <img alt="商品图片" src="data/upload/post/{$val.post.img}" border="0" height="50px"> </a> </div></td>
                                     <td class="cd-tablecell" style="padding:0 8px;">{$val.info}</td>
-                                    <td class="cd-tablecell" style="text-align:center;">{:date("m-d H:i:s",$val['add_time'])}</td>
+                                    <td class="cd-tablecell" style="text-align:center;">{:fdate($val['add_time'])}</td>
                                 </tr>
                                 </volist>
                             </tbody>

@@ -264,6 +264,10 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 }
 .productbox {
 }
+#J_waterfall .product{
+    display: none;
+    width: 672px;
+} 
 .product {
 	padding: 15px 19px 12px 19px;
 	background:#fff;
@@ -427,9 +431,9 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 	font-weight:bold;
 	color:#06c;
 }
-.page a.current {
+.page .current {
 	color:#fff;
-	background:#06c;
+	background:#21457C;
 	padding:0 7px;
 }
 .page a:hover {
@@ -489,7 +493,7 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 	color:#06d;
 	font-size:14px;
 }
-.picks a.picks-title:hover {
+.picks a.picks-title:hover,.picks a.picks-title span{
 	color:#f60;
 }
 .picks a.picks-pic {
@@ -675,13 +679,16 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
     padding-left: 18px;
     background: url("../images/star.png") left center no-repeat;
 }
-.product_show{
-    height: auto !important;
+.product_show{    
+    width: 710px;
 }
-.wall_loading{
-    font-family: "微软雅黑";
-    font-size: 16px;
+.wall_loading{    
     margin: 10px 0px;
+    background: url(../images/ajax-loader.gif) white center center no-repeat;
+    height: 39px;
+}
+.wall_loading span{
+    display: none;
 }
 .feature {
 	margin:20px 0;
@@ -1034,7 +1041,7 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
     width: 684px;
 }
 .product_show {
-    padding-bottom: 40px;
+    
 }
 .con_title {
 	background: url(../images/mainShowBg.png) 0px bottom no-repeat;

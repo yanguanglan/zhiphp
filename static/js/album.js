@@ -38,7 +38,7 @@
         form_init: function(form) {
             //封面图片上传
             form.find('#J_upload_banner').uploader({
-                action_url: PINER.root + '/?m=album&a=album_upload_banner',
+                action_url: PINER.root + '?m=album&a=album_upload_banner',
                 input_id: 'J_banner',
                 input_name: 'banner',
                 onComplete: function(id, fileName, result){
@@ -68,7 +68,7 @@
         },
         create: function(){
             if(!$.ZhiPHP.dialog.islogin()) return !1;
-            $.getJSON(PINER.root + '/?m=album&a=create_album', function(result){
+            $.getJSON(PINER.root + '?m=album&a=create_album', function(result){
                 if(result.status == 1){
                     $.dialog({id:'album', title:lang.create_album, content:result.data, padding:'', fixed:true, lock:true});
                     $.ZhiPHP.album.form_init($('#J_album_form'));
@@ -80,7 +80,7 @@
         edit: function(aid){
             if(!$.ZhiPHP.dialog.islogin()) return !1;
             $.dialog({id:'album', title:lang.edit_album, padding:'', fixed:true, lock:true});
-            $.getJSON(PINER.root + '/?m=album&a=edit_album', {aid:aid}, function(result){
+            $.getJSON(PINER.root + '?m=album&a=edit_album', {aid:aid}, function(result){
                 if(result.status == 1){
                     $.dialog.get('album').content(result.data);
                     $.ZhiPHP.album.form_init($('#J_album_form'));
@@ -92,7 +92,7 @@
         del: function(aid){
             if(!$.ZhiPHP.dialog.islogin()) return !1;
             if(!confirm(lang.confirm_del_album)) return !1;
-            $.getJSON(PINER.root + '/?m=album&a=delete_album', {aid:aid}, function(result){
+            $.getJSON(PINER.root + '?m=album&a=delete_album', {aid:aid}, function(result){
                 if(result.status == 1){
                     $.ZhiPHP.tip({content:result.msg});
                     window.location.reload();
@@ -107,7 +107,7 @@
                 var self = $(this),
                     aid = self.attr('data-aid'),
                     afn = parseInt($('#J_afn_'+aid).text());
-                $.getJSON(PINER.root + '/?m=album&a=follow', {aid:aid}, function(result){
+                $.getJSON(PINER.root + '?m=album&a=follow', {aid:aid}, function(result){
                     if(result.status == 1){
                         //更改按钮&添加数量
                         self.html(lang.unfollow_album);
@@ -125,7 +125,7 @@
                 var self = $(this),
                     aid = self.attr('data-aid'),
                     afn = parseInt($('#J_afn_'+aid).text());
-                $.getJSON(PINER.root + '/?m=album&a=unfollow', {aid:aid}, function(result){
+                $.getJSON(PINER.root + '?m=album&a=unfollow', {aid:aid}, function(result){
                     if(result.status == 1){
                         //更改按钮&添加数量
                         self.html(lang.follow_album);

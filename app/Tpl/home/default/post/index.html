@@ -8,7 +8,7 @@
 <!--内容页开始-->
 <div class="main_content">
 	<!--主部开始-->
-	<div id="main">		
+	<div id="main" class="J_main_page">		
 		<div class="contentbox clearfix">		
 			<div class="contentbox_l fl">			
 				<div class="leftinfo">				
@@ -30,7 +30,7 @@
 						<div class="showitem">							
 							<div class="showitemTitle clearfix">
 								<h3 class="clearfix">{$info.title}<span>&nbsp;&nbsp;{$info.prices}</span></h3>
-								<div class="showitemTime">{:date("m-d H:i",$info['add_time'])}</div>
+								<div class="showitemTime">{:fdate($info['add_time'])}</div>
 							</div>							
 							<div class="showcont clearfix">
 								
@@ -81,7 +81,7 @@
 							<div class="score clearfix">
 						        <div class="score_l fl">
                                     <span class="evaluate_text">评价文本</span>
-                                    <div class="worth fl">
+                                    <div class="worth fl J_worth">
                                         <a class="worth_1" data-id="{$info.id}" data-type="rate_best" href="javascript:;" title="超值">{$info.rate_best}</a>
                                         <a class="worth_2" data-id="{$info.id}" data-type="rate_good" href="javascript:;" title="一般值">{$info.rate_good}</a>
                                         <a class="worth_3" data-id="{$info.id}" data-type="rate_bad" href="javascript:;" title="不值">{$info.rate_bad}</a>

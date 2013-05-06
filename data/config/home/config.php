@@ -1,5 +1,5 @@
 <?php 
 return array (
   'BASIC_THEME' => 'default',
-  'DEFAULT_THEME' => 'zhizhizhi',
+  'DEFAULT_THEME' => 'default',
 );

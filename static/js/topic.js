@@ -44,7 +44,7 @@
                     //获取源数据
                     var src_id = self.attr('data-sid'),
                         src_type = self.attr('data-stype');
-                    $.getJSON(PINER.root + '/?m=space&a=feed_src', {src_id:src_id, src_type:src_type}, function(result){
+                    $.getJSON(PINER.root + '?m=space&a=feed_src', {src_id:src_id, src_type:src_type}, function(result){
                         if(result.status == 1){
                             self.hide();
                             self.siblings('.J_src').html(result.data).show();
@@ -69,7 +69,7 @@
                 if(!confirm(lang.confirm_del_norestore)) return !1;
                 var self = $(this),
                     tid = self.parents(s.topic_unit).attr('data-tid');
-                $.getJSON(PINER.root + '/?m=topic&a=delete', {tid:tid}, function(result){
+                $.getJSON(PINER.root + '?m=topic&a=delete', {tid:tid}, function(result){
                     if(result.status == 1){
                         self.parents(s.topic_unit).slideUp(500, function(){
                             $(this).remove();
@@ -87,7 +87,7 @@
                 if(!$.ZhiPHP.dialog.islogin()) return !1;
                 var tid = $(this).parents(s.topic_unit).attr('data-tid');
                 $.dialog({id:'topic_forward', title:'转发给我的粉丝', width:450, padding:'', fixed:true, lock:true});
-                $.getJSON(PINER.root + '/?m=topic&a=forward', {tid:tid}, function(result){
+                $.getJSON(PINER.root + '?m=topic&a=forward', {tid:tid}, function(result){
                     if(result.status == 1){
                         $.dialog.get('topic_forward').content(result.data);
                         $.ZhiPHP.topic.forward_form($('#J_forward_form'));
@@ -139,7 +139,7 @@
         comment_list: function(unit){
             var s = $.ZhiPHP.topic.settings,
                 tid = unit.attr('data-tid');
-            $.getJSON(PINER.root + '/?m=topic&a=comment', {tid:tid}, function(result){
+            $.getJSON(PINER.root + '?m=topic&a=comment', {tid:tid}, function(result){
                 if(result.status == 1){
                     unit.find(s.cmt_pub).remove();
                     unit.find('.J_feed_info').append(result.data);
@@ -171,7 +171,7 @@
                     tid = unit.attr('data-tid'),
                     content = unit.find('.J_cmt_content').val();
                 $.ajax({
-                    url: PINER.root + '/?m=topic&a=comment',
+                    url: PINER.root + '?m=topic&a=comment',
                     type: 'POST',
                     data: {
                         tid: tid,
@@ -212,7 +212,7 @@
                 var self = $(this),
                     cmt_i = self.parents(s.cmt_unit),
                     cid = cmt_i.attr('data-cid');
-                $.getJSON(PINER.root + '/?m=topic&a=comment_del', {cid:cid}, function(result){
+                $.getJSON(PINER.root + '?m=topic&a=comment_del', {cid:cid}, function(result){
                     if(result.status == 1){
                         cmt_i.remove();
                     }else{
@@ -245,7 +245,7 @@
                     tid = cmt_i.attr('data-tid'),
                     content = cmt_i.find('.J_cmt_content').val();
                 $.ajax({
-                    url: PINER.root + '/?m=topic&a=comment',
+                    url: PINER.root + '?m=topic&a=comment',
                     type: 'POST',
                     data: {
                         tid: tid,

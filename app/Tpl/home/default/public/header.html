@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    {:C('pin_head_meta')} 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <load href="__ROOT__static/js/jquery/jquery.js" />
     <load href="{:THEME_PATH}public/css/base.css" />
@@ -11,7 +12,9 @@
     <load href="__ROOT__static/js/common.js" />		
     <title>{$page_seo.title}</title>    
     <meta name="keywords" content="{$page_seo.keywords}" />
-    <meta name="description" content="{$page_seo.description}" />    
+    <meta name="description" content="{$page_seo.description}" />   
+    
+    
 	<script type="text/javascript">	
     <if condition="$visitor">
     var IS_LOGIN=true;
@@ -79,8 +82,8 @@
             <div class="logo"><a href="./">高性价比产品网购推荐，值得您经常来看看</a></div>
             <div class="topAd">
             	<div class="not_left_ce">
-    				<span class="not_a1" onmouseout="gstart()" onmouseover="gstop()" style="cursor:pointer;" onclick="goup()"><img src="http://www.smzdm.com/wp-content/themes/smzdm_v4/images/notice_left.png"></span>
-    				<span class="not_a2" onmouseout="gstart()" onmouseover="gstop()" style="cursor:pointer;" onclick="godown()"><img src="http://www.smzdm.com/wp-content/themes/smzdm_v4/images/notice_right.png"></span>
+    				<span class="not_a1" onmouseout="gstart()" onmouseover="gstop()" style="cursor:pointer;" onclick="goup()"><img src="{:THEME_PATH}public/images/notice_left.png"></span>
+    				<span class="not_a2" onmouseout="gstart()" onmouseover="gstop()" style="cursor:pointer;" onclick="godown()"><img src="{:THEME_PATH}public/images/notice_right.png"></span>
     			</div>
     			<div id="news">
     			     <ul id="topAd" onmouseout="gstart()" onmouseover="gstop()" style="margin-top: 0px;">

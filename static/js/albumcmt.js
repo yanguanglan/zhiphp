@@ -54,7 +54,7 @@
                     return false;
                 }
                 $.ajax({
-                    url: PINER.root + '/?m=album&a=comment',
+                    url: PINER.root + '?m=album&a=comment',
                     type: 'POST',
                     data: {
                         id: aid,

@@ -10,7 +10,7 @@
             return "" == PINER.uid ? ($.ZhiPHP.dialog.login(), !1) : !0;
         },
         login: function(){
-            $.getJSON(PINER.root + '/?m=user&a=login', function(result){
+            $.getJSON(PINER.root + '?m=user&a=login', function(result){
                 if(result.status == 0){
                     $.ZhiPHP.tip({content:result.msg, icon:'error'});
                 }else{

@@ -1,5 +1,5 @@
 <volist name="post_list" id="val">
-  <div class="product mb10">
+  <div class="product mb10 J_item">
     <h2>
         <a data-id="{$val.id}" href="{:post_url($val)}" target="_blank" <if condition="$val['tcolor']">style="color: {$val.tcolor};"</if>>
             {$val.title}
@@ -15,7 +15,7 @@
                 <a class="blue" href="{:u('post/index',array('id'=>$val['id']))}#J_messagebox">等你来评论</a>
             </span>
         </span> 
-        <span class="date">{:date("Y年m月d日",$val['add_time'])}</span> 
+        <span class="date">{:fdate($val['add_time'])}</span> 
         <span class="author">{$val.uname} </span> 
         <span class="folder">
             <volist name="val['cate_list']" id="c">

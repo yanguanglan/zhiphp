@@ -21,7 +21,7 @@
                 var id = $(this).attr('data-id'),
                     num_input = $(this).attr('data-num'),
                     num = $(num_input).val();
-                $.getJSON(PINER.root + '/?m=exchange&a=ec', {id:id, num:num}, function(result){
+                $.getJSON(PINER.root + '?m=exchange&a=ec', {id:id, num:num}, function(result){
                     if(result.status == 1){
                         $.ZhiPHP.tip({content:result.msg});
                     }else if(result.status == 2){
