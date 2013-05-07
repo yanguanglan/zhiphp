@@ -5,52 +5,110 @@
     <!--主部开始-->
     <div id="main" class="J_main_page">
         <div class="contentbox clearfix">
-
-            <div class="contentbox_l fl">                
-                <div class="leftinfo">
-                    <div class="clearfix crumbBox">当前位置:<a href="/">首页</a>>><strong>九块邮</strong></div>
+            <div class="contentbox_l fl jky_detail">     
+                <div class="m15">
+                    <a class="jky_title" href="{:U(MODULE_NAME.'/go',array('id'=>$info['id']))}">{$info.title}</a>
+                    <div class="clearfix content mt10">
+                        <a href="{:U(MODULE_NAME.'/go',array('id'=>$info['id']))}" class="jky_img fl"><img src="{:attach($info['img'],MODULE_NAME)}"/></a>
+                        <div class="goods_detail">
+                            <div class="price_tag tag_buy">
+                    			            <i>¥</i>9<span>.80</span><span class="ori_price">￥32.45</span>
+                                <a id="pte_buy" href="http://ju.jiukuaiyou.com/jump/10w3ki" target="_blank"></a>
+                                                    </div>
+                            <div class="goods_quan new_quan">
+                                            <div class="change_bottom">
+                                    <p class="shoot_time">开抢时间：5月7日10时00分</p>
+                                </div>
                     
-                    <div class="showinfo clearfix">
-                        <volist name="list" id="item">
-                            <div class="jky_item <if condition='$i%3 eq 0'> no_mr</if>">
-                                <h3>
-                                    <i class="orig" title="{$item.orig.title}" style="background-image: url('{:attach($item['orig']['img'],'jky_orig')}');"></i>
-                                    <if condition="$item['is_duxiang']">
-                                        <span class="green"></span>    
-                                    </if>
-                                    <a class="inform_title" href="{:u('jiukuaiyou/detail',array('id'=>$item['id']))}" target="_blank">
-                                        <i class="tao-d" title="九块邮"></i>{$item.title} 原价{$item.mprice}元 促销价{$item.price}元
-                                    </a>
-                                </h3>
-                                <div class="pic">
-                                    <a href="{:u('jiukuaiyou/detail',array('id'=>$item['id']))}" target="_blank">                                    
-									   <img class="img" alt="{$item.title} 原价{$item.mprice}元 促销价{$item.price}元" src="http://s1.juancdn.com/bao/130505/r/p/5185fd09f2778_350x350.jpg_220x220.jpg"/>
-                                    </a>
-                                </div>
-                                <div class="buy_mask"></div>
-                                <div class="buy_state clearfix">
-                                    <span class="begin_time">开始：{:date("m月d日H时i分")}</span>
-                                </div>
-                                <div class="buy_content">
-                                    <a target="_blank" href="{:U('jiukuaiyou/go',array('id'=>$item['id']))}" class="buy_action clearfix">
-                                        <span class="price"><em>￥</em>9<span>.90</span>
-                                        </span>
-                                        <span class="oldprice_1">￥{$item.price}</span>
-                                        <b class="btn"></b>
-                                    </a>
-                                </div>                                 
+                            </div>        
+                            <div class="change_recommend">
+                            <p><a class="comm_name">众臣电商推荐：</a>居优乐铝叶USB迷你风扇，夏季自然风，优质环保材质，用料足，坚实耐用，一键式开关，风随心动  。</p>
                             </div>
-                        </volist>
+                            <div class="shareto">
+                                <span class="share_txt">分享到：</span>
+                                <div class="sharebaidu">
+                                    <!-- Baidu Button BEGIN -->
+                                    <div class="bdshare_t bds_tools_32 get-codes-bdshare" id="bdshare" data="{'text':'#九块邮#居优乐铝叶USB迷你风扇 原价32.45元 促销价9.80元','comment':'居优乐铝叶USB迷你风扇，夏季自然风，优质环保材质，用料足，坚实耐用，一键式开关，风随心动  。','desc':'居优乐铝叶USB迷你风扇 原价32.45元 促销价9.80元','url':'http://www.jiukuaiyou.com/deal/10w3ki#101010'}">
+                                        <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+                                        <a class="bds_sqq" title="分享给QQ好友" href="#"></a>
+                                        <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+                                    </div>
+                                    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=642881"></script>
+                                    <script type="text/javascript" id="bdshell_js"></script>
+                                    <script type="text/javascript">
+                                    var bds_config = {'review':'off'};
+                                    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                                    </script>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="page">{$page}</div>
+					<!--我要留言开始-->
+					<div class="messagebox" id="J_messagebox">
+                        <div class="title_wrap">
+                            <div class="title">留言</div>
+                        </div>
+                        <div class="m15">
+                            <textarea class="textareabox" id="J_cmt_content"></textarea>
+    						<div class="exitbox clearfix">
+    							<div class="exitbox_r fr">
+    								<input class="submit_btn" id="J_cmt_submit" type="button" value="确定"/>
+    							</div>
+    						</div>
+                        </div>						
+					</div>  
+                                        
+					<!--评论开始-->
+					<div class="comments" id="J_comment_area" data-id="{$info.id}">						
+						<div class="comments_body">
+                        <if condition="$cmt_page">
+                        <div class="commentspage clearfix">
+                        	<div class="page fr J_cmt_page">{$cmt_page}</div>
+                        </div>	                                
+                        </if>
+                        <ul class="commentslist" id="J_cmt_list">
+                            <include file="ajax_comment_list" />
+                        </ul>	
+                        <if condition="$cmt_page">
+                        <div class="commentspage clearfix">
+                        	<div class="page fr J_cmt_page">{$cmt_page}</div>
+                        </div>	                                
+                        </if>
+						</div>
+					</div>
+					<!--评论结束-->
+                    <div class="jiu_shi jiu_item">						
+						<h3>您还会喜欢...</h3>
+                        <ul class="shijiu_list">
+                        	<li style="margin-left:0px;">
+                        	<a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4q" class="pic">
+                        	<img src="http://s1.juancdn.com/bao/130507/k/t/5188785a150dd_800x800.jpg_148x148.jpg" style="display: inline;"></a>
+                        	<p class="title_name"><a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4q">lantern/兰亭 滋润去屑洗发水200ml</a></p>
+                        	<p class="detail"><span class="price">￥9.98</span><a class="go_action" target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4q">去抢购&gt;&gt;</a></p>
+                        	</li><li>
+                        	<a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4c" class="pic">
+                        	<img src="http://s1.juancdn.com/bao/130507/d/a/518877b44eb60_800x800.jpg_148x148.jpg" style="display: inline;"></a>
+                        	<p class="title_name"><a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4c">全棉纯棉加厚柔软吸水洗脸面巾</a></p>
+                        	<p class="detail"><span class="price">￥9.90</span><a class="go_action" target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws4c">去抢购&gt;&gt;</a></p>
+                        	</li><li>
+                        	<a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0u" class="pic">
+                        	<img src="http://s1.juancdn.com/bao/130507/3/t/51887375c8ac5_800x800.jpg_148x148.jpg" style="display: inline;"></a>
+                        	<p class="title_name"><a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0u">珊瑚绒毯子</a></p>
+                        	<p class="detail"><span class="price">￥9.90</span><a class="go_action" target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0u">去抢购&gt;&gt;</a></p>
+                        	</li><li class="no_mr">
+                        	<a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0c" class="pic">
+                        	<img src="http://s1.juancdn.com/bao/130507/b/8/5188729f44cae_750x750.jpg_148x148.jpg" style="display: inline;"></a>
+                        	<p class="title_name"><a target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0c">居优乐铝叶 USB迷你小风扇</a></p>
+                        	<p class="detail"><span class="price">￥9.60</span><a class="go_action" target="_blank" href="http://ju.jiukuaiyou.com/deal/10ws0c">去抢购&gt;&gt;</a></p>
+                        	</li></ul>
+					   </div>                    
                 </div>
-        </div>
-        <div class="contentbox_r fr">
-            <div class="rightinfo">
-                <include file="public:find" />                
+            </div>
+            <div class="contentbox_r fr">
+                <include file="right" />   
             </div>
         </div>
-    </div>
     </div>
     <!--主部结束-->
 </div>	

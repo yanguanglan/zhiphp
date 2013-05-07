@@ -25,11 +25,7 @@ class settingAction extends backendAction {
         $obj_dir = new Dir;
         is_dir(RUNTIME_PATH) && $obj_dir->delDir(RUNTIME_PATH);
         
-        $setting = $this->_post('setting', ',');
-        if (!empty($_FILES['site_logo']['name'])) {                        
-            $this->_upload($_FILES['site_logo'], 'misc',array(),'logo');
-            $setting['site_logo']=$_FILES['site_logo']['name'];
-        }
+        $setting = $this->_post('setting', ',');        
         
         foreach ($setting as $key => $val) {
             $val = is_array($val) ? serialize($val) : $val;

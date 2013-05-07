@@ -32,7 +32,7 @@
 							<a class="mallnav-pic" href="{:u('mall/info',array('id'=>$v['id']))}">
                                 <img src="{:attach($v['img'],'mall')}"/>
                             </a>
-							<a class="mallnav-title" href="{:mall_url($v)}" target="_blank">京东商城</a>
+							<a class="mallnav-title" href="{:mall_url($v)}" target="_blank">{$v.title}</a>
 						</div>
 					</dd>
                     </volist>

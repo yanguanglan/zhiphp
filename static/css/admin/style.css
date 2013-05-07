@@ -150,8 +150,10 @@ select{ vertical-align:middle;background:none repeat scroll 0 0 #F9F9F9;border-c
 
 /*错误提示*/
 #message_list {}
-#message_list .list_error{ border:1px #FF9B9B solid; height:30px; line-height:30px; background:url(bgimg/error_icon.gif) no-repeat 10px 5px #FFFFE9; padding-left:40px; color:#F00; margin-bottom:5px;}
-
+#message_list .list_error,#message_list .list_tip{ border:1px #FF9B9B solid; height:30px; line-height:30px; background:url(bgimg/error_icon.gif) no-repeat 10px 5px #FFFFE9; padding-left:40px; color:#F00; margin-bottom:5px;}
+#message_list .list_tip{
+    color: green;
+}
 /*登录页面*/
 .login_body{background:#3a6ea5;}
 .login_table{width:450px;height:140px;margin:150px auto 0;}
@@ -434,4 +436,11 @@ body { _margin:0; _height:100%; }/*IE6 BUG*/
 }
 .inner_table td{
     padding-left: 0px;
+}
+.site_logo_upload{
+    padding-top: 10px;
+}
+.site_logo_upload img{
+    width: 200px;
+    height: 50px;
 }

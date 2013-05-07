@@ -1,14 +1,62 @@
 <div class="new_cmt_list">
-    <div class="title">TA们在说 <a href="">更多>></a></div>
+    <div class="title">TA们在说 <a href="" class="fr more">更多>></a></div>
     <div class="list">
-        <div class="item">
-            <volist name="cmt_list" id="item">
-                <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="{:attach($item['img'],MODULE_NAME)}"/></a>
-                <div class="fr">
-                    <a href="">{$item.cmt.uname}</a>:
-                    {$item.cmt.info}
-                </div>
-            </volist>
-        </div>    
+        <volist name="cmt_list" id="item">
+            <div class="item">            
+                    <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="{:attach($item['img'],MODULE_NAME)}"/></a>
+                    <div class="fr">
+                        <a href="">{$item.cmt.uname}</a>:
+                        {$item.cmt.info}
+                    </div>        
+            </div>
+        </volist>   
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>  
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>
+        <div class="item clearfix">            
+            <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl"><img src="http://s1.juancdn.com/bao/130506/y/j/518773e51231d_311x312.jpg_54x54.jpg"/></a>
+            <div class="fr">
+                <a href="" class="uname">锦蓝色:</a>
+                好有创意的杯子啊
+                <div class="time">7分钟前</div>
+            </div>        
+        </div>       
     </div>
 </div>

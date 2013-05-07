@@ -5,7 +5,10 @@
 </div>
 
 <div class="pad_lr_10">
-    <form action="" method="get">
+    <ul id="message_list">
+        <li class="list_tip">提示：上传的logo图片扩展名必须为jpg格式</li>
+    </ul>
+    <form action="{:U(MODULE_NAME.'/'.ACTION_NAME)}" method="post" enctype="multipart/form-data">
     <volist name="template_list" id="val">
     <div class="table_block">
         <div class="pad_10">
@@ -16,7 +19,14 @@
                     <table>
                         <tr>
                             <th align="right"><input type="radio" name="dirname" value="{$val.dirname}" <if condition="$def_tpl eq $val['dirname']">checked="checked"</if> /></th>
-                            <td width="160"><if condition="$def_tpl eq $val['dirname']"><span class="red">默认</span><else/><a href="{:U('template/index',array('dirname'=>$val['dirname']))}" class="blue">设为默认</a></if></td>
+                            <td width="160">
+                                <if condition="$def_tpl eq $val['dirname']">
+                                    <span class="red">默认</span>
+                                    <a href="__ROOT__" target="_blank">[预览]</a>
+                                <else/>
+                                    <span class="blue">设为默认</span>
+                                </if>
+                            </td>
                         </tr>
                         <tr><th align="right">模板文件夹：</th><td>{$val.dirname}</td></tr>
                         <tr><th align="right">模板名称：</th><td>{$val.name}</td></tr>
@@ -25,12 +35,18 @@
                     </table>
               </td>
             </tr>
+            <tr>
+                <td colspan="2" class="site_logo_upload">
+                    <img src="__ROOT__app/Tpl/home/{$val['dirname']}/public/images/logo.jpg?{:time()}"/>
+                    <input name="site_logo[]" type="file"/>
+                    <input name="tpl[]" type="hidden" value="{$val['dirname']}"/>
+                </td>
+            </tr>
         </table>
         </div>
     </div>
-    </volist>
-        <input type="hidden" name="g" value="admin" />
-        <input type="hidden" name="m" value="template" />            
+    </volist>  
+        <include file="public:_submit" />          
     </form>
 </div>
 

@@ -42,13 +42,6 @@
         	<th>{:L('closed_reason')} :</th>
         	<td><textarea rows="4" cols="50" name="setting[closed_reason]" id="closed_reason">{:C('pin_closed_reason')}</textarea></td>
     	</tr>
-        <tr>
-            <th>网站LOGO(jpg格式)：</th>
-            <td>
-                <img src="{:attach(C('pin_site_logo'),'misc')}"/>
-                <input name="site_logo" type="file"/>
-            </td>
-        </tr>
 	</table>
     <include file="public:_submit" />
 	</form>

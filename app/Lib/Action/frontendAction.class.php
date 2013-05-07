@@ -110,7 +110,7 @@ class frontendAction extends baseAction {
     protected function _pager($count, $pagesize) {
         $pager = new Page($count, $pagesize);
         $pager->rollPage = 5;
-        $pager->setConfig('prev', '<');
+        //$pager->setConfig('prev', '<');
         $pager->setConfig('theme', '%upPage% %first% %linkPage% %end% %downPage%');
         return $pager;
     }
@@ -271,7 +271,7 @@ class frontendAction extends baseAction {
         $list = $select->select();     
         //print_r($list);exit();   
         $this->assign('list', $list);
-        $this->assign('page', $pager->show());
+        $this->assign('page', $pager->fshow());
         return $list;
     }    
 }

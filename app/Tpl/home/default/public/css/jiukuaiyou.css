@@ -1,4 +1,10 @@
 /*9快邮*/
+.no_mr{
+    margin-right: 0px !important;
+}
+.m15{
+    margin: 15px;
+}
 .nav ul li.home a.current{
     background-position: -18px -16px;
 }
@@ -8,10 +14,12 @@
 }
 .contentbox_l{
     width: 760px;   
-    padding-left: 0px;    
+    padding: 0px;
+    margin-top: 20px;    
 }
 .contentbox_r{
     width: 220px;
+    padding-top: 20px;
 }
 .jky_item{
     width: 220px;
@@ -29,9 +37,6 @@
     -o-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.08);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.08);    
     border: 1px solid #E5E5E5;
-}
-.jky_item.no_mr{
-    margin-right: 0px;
 }
 .jky_item .img{
     width: 220px;
@@ -125,4 +130,367 @@
     border-bottom: #f1f1f1 solid 1px;
     padding: 0 15px;
     color: #8d8d8d;
+}
+.new_cmt_list .title .more{
+    font-weight: 400;
+    color:#8f8f8f;
+}
+.new_cmt_list .list{
+    background: white;
+    padding: 10px;
+}
+.new_cmt_list .list .item .fl{
+    display: block;
+    width: 54px;
+    
+}
+.new_cmt_list .list .item .fl img{
+    width: 54px;
+    height: 54px;
+}
+.new_cmt_list .list .item .fr{
+    width: 130px;
+}
+.new_cmt_list .list .item .fr .uname{
+    color: #ff7201;
+}
+.new_cmt_list .list .item .fr .time{
+    text-align: right;
+    color: #ccc;
+}
+.jky_cate{
+    padding-top: 20px;
+    position: relative;
+    height: 80px;
+}
+.jky_cate .level_1{
+    background-color: #F8F8F8;
+    border: 1px solid #e5e5e5;
+    border-bottom: none;
+    border-radius: 3px 3px;
+    display: inline-block;
+    height: 32px;
+    font: normal 16px/32px "微软雅黑";    
+}
+.jky_cate .level_1 a{
+    border-radius: 3px 3px;
+    height: 31px;
+    line-height: 31px;
+    margin-top: -1px;
+    position: relative;   
+    display: inline-block;
+    padding: 1px 20px; 
+    float: left;
+}
+.jky_cate .level_1 a:hover {
+	text-decoration: none;
+	background: #fedecf repeat scroll;
+}
+.jky_cate .level_1 a.hover{
+    border-bottom: 1px solid #cb290a;
+    background-color: #e14425;
+    color: #FAF4E4;
+}
+.jky_cate .level_1 a.hover i{
+    display: block;
+    width: 14px;
+    height: 7px;        
+    background: url(../images/arrow.png) no-repeat;
+    position: absolute;
+    bottom: -7px;
+    left: 44%;
+    z-index: 10;
+}
+.jky_cate .level_2{
+    height: 45px;    
+    line-height: 45px;
+    background: white;
+    border: 1px solid #EAEAEA;
+    padding: 0px 15px;
+    font-size: 14px;
+    position: absolute;
+    top: 53px;    
+    width: 970px;
+}
+.jky_cate .level_2 a{
+    display: block;
+    font-size: 14px;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 44px;      
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    margin: 0px 10px;
+    
+}
+.jky_cate .level_2 a.hover{
+    font-weight: bold;  
+    background: url('../images/jky_leve2_hover.jpg') no-repeat center center transparent;
+    color: #fff;   
+    
+    
+}
+.page span,.page a{
+    background: #fff;
+    border: 1px solid #E2E2E2 !important;
+    color: #777 !important;
+    display: inline-block;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 6px;
+    padding: 0 13px;
+    text-decoration: none;
+}
+.page .current{
+    background-color: #F50;
+    color: #fff !important;
+    display: inline-block;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 6px;
+    padding: 0 13px;    
+}
+.page a:hover{
+    border-color: #F50 !important;
+    color: #F50 !important;
+}
+.jky_detail{
+    background: white;
+}
+.jky_title{
+    color: #000;
+    font-size: 20px;
+    font-family: "微软雅黑","宋体";
+    font-weight: normal;    
+}
+.jky_title:hover{
+    text-decoration: underline;
+}
+.jky_img img{
+    width: 310px;
+    height: 310px;
+}
+.goods_detail{
+    float: right;
+    width: 363px;
+    position: relative;
+    height: 313px;
+    position: relative;    
+}
+.goods_detail .price_tag {
+    background: url(../images/jiu_item.gif) no-repeat 0 0;
+    height: 68px;
+    width: 355px !important;
+    line-height: 68px;
+    font-size: 44px;
+    color: #fff;
+    padding-left: 20px;
+    position: relative;
+    font-family: "Microsoft Yahei","Arial","Verda","tahoma";
+    font-weight: bold;
+    top: 3px;
+    left: -5px;
+    -webkit-box-shadow: -1px 3px 3px rgba(196,194,181,0.6);
+    -moz-box-shadow: -1px 3px 3px rgba(196,194,181,0.6);
+    box-shadow: -1px 3px 3px rgba(196,194,181,0.6);
+    text-shadow: 0 0 0 transparent, 1px 1px 1px #8A181B;
+}
+.goods_detail .tag_buy {
+    background-position: 0 -73px;
+}
+.goods_detail .price_tag i {
+    font-size: 24px;
+    font-style: normal;
+    font-family: "微软雅黑","arial";
+    margin-right: 3px;
+}
+.goods_detail .price_tag span {
+    font-size: 28px;
+}
+.goods_detail .tag_buy .ori_price {
+    color: #ffb499;
+}
+.goods_detail .price_tag .ori_price {
+    color: #b6e09d;
+    font-size: 12px;
+    text-decoration: line-through;
+    margin-left: 3px;
+    text-shadow: none;
+    font-weight: normal;
+}
+.goods_detail .price_tag a {
+    display: block;
+    position: absolute;
+    background: url(../images/jiu_item.gif) no-repeat 0 -294px;
+    height: 42px;
+    width: 115px;
+    top: 14px;
+    right: 18px;
+    overflow: hidden;
+}
+.goods_detail .tag_buy a {
+    background-position: 0 -341px;
+    width: 99px;
+    height: 41px;
+    right: 27px;
+}
+.goods_quan {
+    border: #ffe49e solid 1px;
+    border-top: none;
+    width: 347px !important;
+    padding: 21px 11px 14px 3px;
+    background: #fffdeb;
+}
+.goods_quan .change_bottom {
+    height: auto;
+    overflow: hidden;
+    width: 322px;
+}
+.goods_quan .shoot_time {
+    margin-left: 10px;
+    float: left;
+    width: 250px;
+}
+.change_bottom .shoot_time {
+    color: #999;
+}
+.change_recommend {
+    height: auto;
+    width: 360px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.change_recommend p {
+    color: #999;
+    line-height: 20px;
+}
+.change_recommend p .comm_name {
+    color: #92bd2f;
+}
+.shareto {
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 180px;
+}
+.shareto .share_txt {
+    color: #999;
+    float: left;
+    height: 37px;
+    line-height: 38px;
+}
+.shareto .sharebaidu {
+    float: right;
+}
+.messagebox{
+    border: #eaeae9 solid 1px;
+    border-top: #eaeae9 solid 2px;
+    margin-top: 20px;    
+}
+.messagebox .textareabox{
+    width: 680px;
+    height: 50px;
+    -webkit-box-shadow: 2px 2px 3px #ECECEC inset;
+    box-shadow: 2px 2px 3px #ECECEC inset;
+
+}
+.messagebox .submit_btn{
+    background: url("../images/try_total.gif") no-repeat scroll 0 -305px transparent;
+    color: #FFF;
+    display: block;
+    font-weight: 600;
+    height: 28px;
+    line-height: 26px;
+    margin: 0 2px 0 5px;
+    text-align: center;
+    width: 80px;
+    float: right;    
+}
+.messagebox .title_wrap{
+    height: 36px;
+    background: #f5f5f5;
+    padding-left: 10px;    
+}
+.messagebox .title{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+    background: #fff;
+    padding: 0px 10px;
+    color: black;
+    font-size: 14px;
+}
+.jiu_item {
+    margin-top: 100px;
+    background: #fff;
+    padding: 15px 15px 25px 15px;
+    border-top: #edeee9 dashed 2px;
+}
+.jiu_item h3 {
+    color: #808080;
+    font-family: "微软雅黑","宋体";
+    font-size: 18px;
+    font-weight: normal;
+}
+.jiu_shi .shijiu_list {
+    clear: both;
+    height: auto;
+    overflow: hidden;
+    margin-top: 13px;
+}
+.jiu_shi .shijiu_list li{
+    float: left;
+    width: 162px;
+    margin-right: 14px;
+}
+.jiu_shi .shijiu_list li .pic {
+    padding: 6px;
+    display: block;
+    height: 148px;
+    width: 148px;
+    overflow: hidden;
+    border: #e5e5e5 solid 1px;
+}
+.jiu_shi .shijiu_list li .pic img {
+    width: 148px;
+}
+.jiu_shi .shijiu_list li .title_name {
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+}
+.jiu_shi .shijiu_list li .title_name a {
+    text-decoration: none;
+    color: #5a5a5a;
+}
+.jiu_shi .shijiu_list li .detail {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 3px;
+}
+.jiu_shi .shijiu_list li .detail {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 3px;
+}
+.jiu_shi .shijiu_list li .detail .price {
+    color: #ee6217;
+    font-family: "微软雅黑","Arial";
+    font-size: 18px;
+    display: block;
+    float: left;
+}
+.jiu_shi .shijiu_list li .detail .go_action {
+    color: #129800;
+    text-decoration: none;
+    float: right;
 }
