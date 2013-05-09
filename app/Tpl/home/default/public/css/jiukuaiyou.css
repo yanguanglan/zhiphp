@@ -13,7 +13,7 @@
     border: none;
 }
 .contentbox_l{
-    width: 760px;   
+    width: 770px;   
     padding: 0px;   
 }
 .contentbox_r{
@@ -220,8 +220,8 @@
     padding: 0px 15px;
     font-size: 14px;
     position: absolute;
-    top: 43px;    
-    width: 970px;
+    top: 43px;  
+    width: 730px;  
 }
 .jky_cate .level_2 a{
     display: block;
@@ -518,4 +518,18 @@
     color: #129800;
     text-decoration: none;
     float: right;
+}
+.jky_login{
+    padding: 10px;
+    background: url(../images/per_bg.jpg) repeat;
+    border-bottom: #e7e7e7 solid 1px;
+    position: relative;
+}
+.jky_login .bg{
+    height: 72px;
+    background: url(../images/jiu_item.gif) no-repeat 0 -481px;
+    margin-bottom: 7px;    
+}
+.jky_login .fl{
+    
 }

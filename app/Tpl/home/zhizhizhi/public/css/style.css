@@ -870,6 +870,19 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 	line-height:26px;
 	color:#666;
 }
+.quote {
+	display: block;
+	background: url(../images/quote.png) 5px 10px no-repeat #f5faff;
+	border: 1px solid #dae9f5;
+	padding: 15px 5px 10px 30px;
+	line-height: 1.6em;
+	border-bottom-width: 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 10px 0;
+	color: #555;
+}
 .malltop ul{
     margin-left: 50px;
 }

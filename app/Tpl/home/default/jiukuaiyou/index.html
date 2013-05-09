@@ -4,23 +4,23 @@
 <div class="main_content">
     <!--主部开始-->
     <div id="main">
-        <div class="jky_cate">
-            <div class="level_1 clearfix">
-                <a href="{:u(MODULE_NAME.'/index',array('cid'=>$cid))}" <if condition="$type eq 'all'">class="hover"</if>>全部<i></i></a>
-                <a href="{:U(MODULE_NAME.'/index',array('type'=>'underway','cid'=>$cid))}" <if condition="$type eq 'underway'">class="hover"</if>>进行中<i></i></a>
-                <a href="{:U(MODULE_NAME.'/index',array('type'=>'notstart','cid'=>$cid))}" <if condition="$type eq 'notstart'">class="hover"</if>>即将开始<i></i></a>
-                <a href="{:U(MODULE_NAME.'/index',array('type'=>'end','cid'=>$cid))}" <if condition="$type eq 'end'">class="hover"</if>>已结束<i></i></a>
-            </div>
-            <div class="level_2">
-                <span class="fl">筛选:</span>
-                <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type))}" <if condition="$cid eq 0"> class="hover"</if>>所有</a>
-                <volist name="cat_list" id="v">
-                <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type,'cid'=>$v['id']))}" <if condition="$cid eq $v['id']"> class="hover"</if>>{$v.name}</a>
-                </volist>
-            </div>
-        </div>      
-        <div class="contentbox clearfix">    
+        <div class="contentbox clearfix">         
             <div class="contentbox_l fl">
+                <div class="jky_cate">
+                    <div class="level_1 clearfix">
+                        <a href="{:u(MODULE_NAME.'/index',array('cid'=>$cid))}" <if condition="$type eq 'all'">class="hover"</if>>全部<i></i></a>
+                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'underway','cid'=>$cid))}" <if condition="$type eq 'underway'">class="hover"</if>>进行中<i></i></a>
+                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'notstart','cid'=>$cid))}" <if condition="$type eq 'notstart'">class="hover"</if>>即将开始<i></i></a>
+                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'end','cid'=>$cid))}" <if condition="$type eq 'end'">class="hover"</if>>已结束<i></i></a>
+                    </div>
+                    <div class="level_2">
+                        <span class="fl">筛选:</span>
+                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type))}" <if condition="$cid eq 0"> class="hover"</if>>所有</a>
+                        <volist name="cat_list" id="v">
+                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type,'cid'=>$v['id']))}" <if condition="$cid eq $v['id']"> class="hover"</if>>{$v.name}</a>
+                        </volist>
+                    </div>
+                </div>               
                 <div class="showinfo clearfix">
                     <volist name="list" id="item">
                         <div class="jky_item <if condition='$i%3 eq 0'> no_mr</if> tag_{$item.state}">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="page">{$page}</div>
             </div>
-            <div class="contentbox_r fr">
+            <div class="contentbox_r fr mt10">
                 <include file="right" />
             </div>
         </div>
