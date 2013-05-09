@@ -38,8 +38,12 @@
     {:R('advert/index', array(15), 'Widget')}
     </if>
     <div class="mt15"></div>
-	<input class="search-textbox"/>
-	<button class="search-btn">搜索</button>
+    <form method="get" id="searchform" action="__ROOT__index.php">
+    	<input class="search-textbox" name="keyword" value="{$search.keyword}"/>
+    	<input type="submit" class="search-btn" value="搜索"/>
+        <input type="hidden" name="m" value="index"/>
+        <input type="hidden" name="a" value="index"/>
+    </form>
 </div>
 
 <div class="picks">

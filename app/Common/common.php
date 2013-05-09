@@ -31,7 +31,8 @@ function msubstr($str, $length, $start = 0, $charset = "utf-8", $suffix = true) 
         preg_match_all($re[$charset], $str, $match);
         $slice = join("", array_slice($match[0], $start, $length));
     }
-    return $suffix ? $slice . '...' : $slice;
+    
+    return strlen($str)>$length ? $slice . '...' : $slice;
 }
 function addslashes_deep($value) {
     $value = is_array($value) ? array_map('addslashes_deep', $value) : addslashes($value);
@@ -342,4 +343,15 @@ function filter_data($data){
         $data[$key]=strip_tags($val);
     }
     return $data;
+}
+function get_jky_state($info){
+    if($info['stime']<=time()&&$info['etime']>=time()){
+        return 'underway';
+    }
+    if($info['stime']>time()){
+        return 'notstart';
+    }
+    if($info['etime']<time()){
+        return 'end';
+    }    
 }

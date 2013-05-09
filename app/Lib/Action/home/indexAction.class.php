@@ -26,5 +26,5 @@ class indexAction extends frontendAction {
         }else{
             $this->error("为提供商品直达链接",U("index/index"));
         }
-    }    
+    }        
 }

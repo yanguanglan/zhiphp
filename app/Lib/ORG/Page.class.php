@@ -164,7 +164,7 @@ class Page {
         // 分析分页参数
         if($this->url){
             $depr       =   C('URL_PATHINFO_DEPR');
-            $url        =   rtrim(U('/'.$this->url,'',false),$depr).$depr.'__PAGE__';
+            $url        =   rtrim(U('/'.$this->url,'',false),$depr).'&'.$this->varPage.'=__PAGE__';
         }else{
             if($this->parameter && is_string($this->parameter)) {
                 parse_str($this->parameter,$parameter);
@@ -178,7 +178,7 @@ class Page {
             }
             $parameter[$p]  =   '__PAGE__';
             $url            =   U($this->path, $parameter);
-        }
+        }        
         //上下翻页字符串
         $upRow          =   $this->nowPage-1;
         $downRow        =   $this->nowPage+1;

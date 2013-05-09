@@ -12,17 +12,8 @@
     <load href="__ROOT__static/js/common.js" />		
     <title>{$page_seo.title}</title>    
     <meta name="keywords" content="{$page_seo.keywords}" />
-    <meta name="description" content="{$page_seo.description}" />   
-    
-    
-	<script type="text/javascript">	
-    <if condition="$visitor">
-    var IS_LOGIN=true;
-    <else/>
-    var IS_LOGIN=false;
-    </if>    
-    var def={$def};
-	</script>    
+    <meta name="description" content="{$page_seo.description}" />       
+    <script src="__ROOT__index.php?m={:MODULE_NAME}&a={:ACTION_NAME}&act=loadjs"></script>  
 </head>
 <body>
 <!--头部开始-->
@@ -110,7 +101,7 @@
                     </volist>
                 </ul>
                 <div class="search fl">
-                    <form method="get" id="searchform" action="/">
+                    <form method="get" id="searchform" action="__ROOT__index.php">
                         <input class="input_l" type="text" name="keyword" id="keyword" value="{$search.keyword}"/>
                         <input type="hidden" name="m" value="index"/>
                         <input type="hidden" name="a" value="index"/>

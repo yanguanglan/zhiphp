@@ -104,7 +104,7 @@ function checkbox(name, val) {
 }
 
 function check_login(content) {
-	if (!IS_LOGIN) {
+	if (!def.is_login) {
 		$.ZhiPHP._tip({
 			content: content || '请登录!',
 			status: false,
@@ -118,7 +118,7 @@ function check_login(content) {
 			}]
 		});
 	}
-	return IS_LOGIN;
+	return def.is_login;
 }
 
 function cookie_exist(name, v) {

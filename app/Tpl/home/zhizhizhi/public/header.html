@@ -15,14 +15,8 @@
 	
     <load href="__ROOT__static/js/jquery/plugins/jquery.cookie.js" />
     <load href="__ROOT__static/js/common.js" />	
-   
-	<script type="text/javascript">
-    <if condition="$visitor">
-    var IS_LOGIN=true;
-    <else/>
-    var IS_LOGIN=false;
-    </if>    
-    var def={$def};    
+    <script src="__ROOT__index.php?m={:MODULE_NAME}&a={:ACTION_NAME}&act=loadjs"></script>  
+	<script type="text/javascript">   
 	$(function($){
 	  $(".headnav-left h3").mouseover(function(){
 		$('.catelist').css('visibility','visible');

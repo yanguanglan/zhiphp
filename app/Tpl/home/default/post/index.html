@@ -16,13 +16,13 @@
 						<span>当前位置:</span>
                         <a href="/">首页 </a>&gt;&gt;&nbsp;
                         <volist name="info['cate_list']" id="c" offset="0" length='4'>
-                            <a href="{:u('post_cate/index',array('id'=>$c['cate_id']))}" target="_blank">{$c.cate.name}</a>
+                            <a href="{:u('post_cate/index',array('id'=>$c['cate_id']))}" target="_blank">九块邮</a>           
                             <if condition="$i lt 4">,
                             <else/>
                             ……
                             </if>
                             
-                        </volist>                        
+                        </volist>             
                         &nbsp;&gt;&gt;&nbsp;
                         <span class="grey">日志详情</span>
 					</div>
@@ -175,9 +175,14 @@
 										<textarea class="textareabox" id="J_cmt_content"></textarea>
 										<div class="exitbox clearfix">
 											<div class="exitbox_l fl">
-												登录帐号：
-												<a href="{:u('user/index')}" target="_blank">{$visitor.username}</a>
-												<a href="{:u('user/logout')}" target="_blank">登出</a>
+                                                <div class="fl J_face">
+                                                    <span class="J_face_btn">表情</span>
+                                                </div>
+                                                <div class="fl">
+                                                    登录帐号：
+    												<a href="{:u('user/index')}" target="_blank">{$visitor.username}</a>
+    												<a href="{:u('user/logout')}" target="_blank">登出</a>
+                                                </div>
 											</div>
 											<div class="exitbox_r fr">
                                                 <!--
@@ -208,3 +213,6 @@
 	<!--主部结束-->	
 </div>
 <include file="public:footer" />
+<script type="text/javascript">
+$.ZhiPHP.comment.init();
+</script>

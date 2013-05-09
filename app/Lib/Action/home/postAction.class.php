@@ -139,7 +139,7 @@ class postAction extends frontendAction {
         $pagesize = 8;
         $map = array('post_id' => $id);
         $count = $this->post_comment_mod->where($map)->count('id');
-        $pager = $this->_pager($count, $pagesize);
+        $pager = $this->_pager($count, $pagesize,__ROOT__."index.php?m=post&a=comment_list&id=$id");
         $pager->path = 'comment_list';
         $cmt_list = $this->post_comment_mod->relation(true)
             ->where($map)->order('id DESC')

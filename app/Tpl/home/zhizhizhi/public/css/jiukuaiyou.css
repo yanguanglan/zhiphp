@@ -22,6 +22,9 @@
 .crumbBox{
     margin: 10px;
 }
+.page a, .page span {
+    border: 1px silver solid;
+}
 .jky_item{
     width: 220px;
     float: left;
@@ -169,7 +172,6 @@
     color: #ccc;
 }
 .jky_cate{
-    padding-top: 10px;
     position: relative;
     height: 80px;
     margin-bottom: 10px;
@@ -220,7 +222,7 @@
     padding: 0px 15px;
     font-size: 14px;
     position: absolute;
-    top: 43px;    
+    top: 33px;    
     width: 970px;
 }
 .jky_cate .level_2 a{

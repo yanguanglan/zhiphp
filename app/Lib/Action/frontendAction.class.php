@@ -33,11 +33,24 @@ class frontendAction extends baseAction {
         }        
         $this->assign('help_list',$help_list);
         $this->assign('gonggao_list',$this->article_mod->where('cate_id=13 and status=1')->order("ordid desc")->select());
-        $this->uid=$this->visitor->info['id'];     
+        $this->uid=intval($this->visitor->info['id']);     
         $this->assign('def',json_encode(array('m'=>MODULE_NAME,'a'=>ACTION_NAME)));   
         $this->assign('req',$_REQUEST);  
         $this->assign('server',$_SERVER);      
-        $this->_assign_common();       
+        $this->_assign_common();
+        $def=array(
+            'is_login'=>$this->uid>0,
+            'm'=>MODULE_NAME,
+            'a'=>ACTION_NAME,
+            'url_prefix'=>__ROOT__,
+        );  
+        $this->assign('def',$def);
+        
+        if($_REQUEST['act']=='loadjs'){
+            header("content-type:text/javascript");            
+            echo "var def=".json_encode($def).';';            
+            exit();             
+        }            
     }
     function _assign_common(){
         $this->assign("quick_mall_list",$this->mall_mod->where("status=1")->order("ordid desc")->limit("10")->select());
@@ -93,6 +106,7 @@ class frontendAction extends baseAction {
         if($page_seo['title']!=C('pin_site_title')){
             //$page_seo['title'].="_".C('pin_site_name');
         }
+        //print_r($page_seo);exit();
         $this->assign('page_seo', $page_seo);
     }
 
@@ -107,10 +121,10 @@ class frontendAction extends baseAction {
     /**
      * 前台分页统一
      */
-    protected function _pager($count, $pagesize) {
-        $pager = new Page($count, $pagesize);
+    protected function _pager($count, $pagesize,$url="") {
+        $pager = new Page($count, $pagesize,$parameter,$url);
         $pager->rollPage = 5;
-        //$pager->setConfig('prev', '<');
+        $pager->url=$url;
         $pager->setConfig('theme', '%upPage% %first% %linkPage% %end% %downPage%');
         return $pager;
     }
@@ -258,7 +272,7 @@ class frontendAction extends baseAction {
         $recommend_list=$this->post_mod->where("is_recommend=1 and status=1 and post_time<=".time())->order("ordid")->limit("0,8")->select();
         $this->assign('recommend_list',$recommend_list);        
     }
-    protected function _assign_list($mod, $where, $page_size = 15, $relation = false) {
+    protected function _assign_list($mod, $where, $page_size = 15, $relation = false,$callback="_parse_assign_list") {
         import("ORG.Util.Page");
         $count = $mod->where($where)->count();
 
@@ -268,10 +282,12 @@ class frontendAction extends baseAction {
         if ($relation) {
             $select = $select->relation($relation);
         }
-        $list = $select->select();     
-        //print_r($list);exit();   
+        $list = $select->select(); 
+        if (method_exists($this, $callback)) {
+            $list = $this->$callback($list);
+        }               
         $this->assign('list', $list);
         $this->assign('page', $pager->fshow());
         return $list;
-    }    
+    }   
 }

@@ -8,7 +8,7 @@ a:hover{
 }
 /*首页列表*/
 #wrap {
-	width:980px;
+	width:1000px;
 	margin:0 auto;
 	position:relative;
 }
@@ -781,9 +781,6 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 }
 .comments_body {
 }
-.commentspage {
-	background:url(../images/commentLine.png) bottom no-repeat;
-}
 .commentslist {
 }
 .commentslist li {
@@ -1509,4 +1506,84 @@ ul.perNotice li.iconNone {
 	float:right;
 	margin-left:60px;
 	cursor: pointer;
+}
+/*表情*/
+.J_face{
+    position: relative;    
+}
+.J_face span.J_face_btn{
+    background: url("../images/total_item.gif") no-repeat scroll -101px -224px transparent;
+    display: block;
+    float: left;
+    padding-left: 20px;
+    margin-right: 5px;
+    height: 20px;
+    width: 30px;
+    line-height: 12px;
+    color: #92BD2F;
+    margin-top: 4px;  
+    cursor: pointer;
+}
+.J_face .content{
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    padding: 6px 6px 6px 6px;
+    height: auto;
+    background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0 !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99a0a0a0,endColorstr=#99a0a0a0);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99a0a0a0,endColorstr=#99a0a0a0);
+    z-index: 1;
+    display:none;    
+}
+.J_face .border{
+    border: 1px solid #C2C2C2;
+}
+.J_face .face_title{
+    height: 36px;
+    width: 480px;
+    background: #f0f1f2;
+    text-indent: 15px;
+    font-size: 14px;
+    color: #4C8D44;
+    line-height: 36px;
+    font-weight: bold;
+}
+.J_face .list{
+    background: white;
+    padding: 10px;
+}
+.J_face .face_title span {
+    float: left;
+    color: #3e3e3e;    
+    padding: 0 15px;
+    background-color: #fff;
+    line-height: 30px;
+    margin-top: 6px;
+    margin-left: 10px;
+    _margin-left: 5px;
+    text-indent: 0px;
+    display: block;
+    color: #000;
+}
+.J_face .close{
+    height: 22px;
+    width: 22px;
+    background: url("../images/total_alert.gif") no-repeat -175px -722px;
+    display: block;
+    position: absolute;    
+    right: -10px;
+    top: -10px;
+    cursor: pointer;
+}
+.J_face .list img{
+    cursor: pointer;
+}
+.J_face .list a{
+    border: 1px solid white;
+    display: block;
+    float: left;
+}
+.J_face .list a:hover{
+    border-color: silver;
 }
