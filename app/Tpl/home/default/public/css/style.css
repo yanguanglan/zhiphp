@@ -609,7 +609,8 @@ color:#0078B6;
 	line-height:1.6em;
 }
 .showitemTitle h3 {
-	font-size:18px;    
+	font-size:18px;
+    font-weight: bold;    
 }
 .showitemTitle h3 span {
 	color:#BB0200;
@@ -1489,7 +1490,7 @@ color:#0078B6;
 	width: 100%;
 }
 #J_waterfall .showitem{
-    display: none;
+    background: white;
 } 
 .showitem .featured {
 	margin:20px 10px 0 0;

@@ -172,6 +172,7 @@
 ;(function($){
     //联动菜单
     $.fn.cate_select = function(options) {
+        //console.log(this.selector);return;
         var settings = {
             field: 'J_cate_id',
             top_option: lang.please_select
@@ -192,7 +193,7 @@
         		selected_arr = [selected];
         	}
         }
-        self.nextAll('.J_cate_select').remove();
+        self.nextAll(this.selector).remove();
         $('<option value="">--'+settings.top_option+'--</option>').appendTo(self);
         $.getJSON(uri, {id:pid}, function(result){
             if(result.status == '1'){
@@ -210,14 +211,14 @@
         });
 
         var j = 1;
-        $('.J_cate_select').die('change').live('change', function(){
+        $(this.selector).die('change').live('change', function(){
             var _this = $(this),
             _pid = _this.val();
-            _this.nextAll('.J_cate_select').remove();
+            _this.nextAll(this.selector).remove();
             if(_pid != ''){
                 $.getJSON(uri, {id:_pid}, function(result){
                     if(result.status == '1'){
-                        var _childs = $('<select class="J_cate_select mr10" data-pid="'+_pid+'"><option value="">--'+settings.top_option+'--</option></select>')
+                        var _childs = $('<select class="'+this.selector.substr(1)+' mr10" data-pid="'+_pid+'"><option value="">--'+settings.top_option+'--</option></select>')
                         for(var i=0; i<result.data.length; i++){
                             $('<option value="'+result.data[i].id+'">'+result.data[i].name+'</option>').appendTo(_childs);
                         }

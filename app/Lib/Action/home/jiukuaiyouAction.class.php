@@ -6,32 +6,35 @@ class jiukuaiyouAction extends frontendAction
     {
         parent::_initialize();
         $this->id = $this->_get('id', 'intval');
-        $this->assign("new_cmt_list",$this->jky_comment_mod->relation(true)->where("status=1")->order("id desc")->limit(10)->select());
+        $this->assign("new_cmt_list",$this->jky_comment_mod->relation(true)
+            ->where("status=1 and (select count(i.id) from ".table('jky_item')." as i where i.status=1 and i.id=".table("jky_comment").".item_id )>0")
+            ->order("id desc")->limit(5)->select());
+        $this->assign("recommend_list",$this->jky_item_mod->where("is_recommend=1 and status=1")->order("ordid asc,id desc")->limit(5)->select());
     }
     
     public function index()
     {
-        $type=$this->_get('type','trim','all');
+        $this->_config_seo(array('title'=>'ä¹å—é‚®_'.C('pin_site_name')));
+        $type=$this->_get('type','trim','all');                            
+        
+        $this->assign('c1',intval($_REQUEST['c1']));
+        $this->assign('c2',intval($_REQUEST['c2']));
         
         $where = "status=1";
-        if($type=='underway'){
-            $where.=" and stime<=".time()." and etime>".time();
+                                  
+        for($i=1;$i<3;$i++){
+            eval("\$cid=intval(\$_REQUEST['c$i']);");
+            if($cid==0)continue;
+            
+            $where.=" and (select count(c.item_id) from ".table("jky_cate_re")." as c where c.cate_id=$cid and c.item_id=".table("jky_item").".id)>0 ";
         }
-        elseif($type=='notstart'){
-            $where.=" and stime>".time();
-        }
-        elseif($type=='end'){
-            $where.=" and etime<".time();
-        }
+                
+        $this->_assign_list($this->jky_item_mod, $where, 15, true);    
         
-        if ($cid = $this->_get('cid', 'intval'))
-        {
-            $where .= " and cate_id=$cid";
-        }
-        $this->assign('cid',$cid);
-        $this->_assign_list($this->jky_item_mod, $where, 15, true);
         $this->assign('type',$type);
-        $this->assign('cat_list',$this->jky_cate_mod->where("status=1")->order("ordid desc")->select());
+        
+        $this->assign('type_list',$this->jky_cate_mod->where("pid=1 and status=1")->order("ordid desc")->select());
+        $this->assign('cat_list',$this->jky_cate_mod->where("pid=2 and status=1")->order("ordid desc")->select());
         
         $this->display();
     }
@@ -42,6 +45,7 @@ class jiukuaiyouAction extends frontendAction
         $this->assign('info',$info);
         $this->comment_list($this->id);
         $this->assign('like_list',$this->jky_item_mod->where("id<".$this->id)->limit(4)->select());
+        $this->_config_seo(array('title'=>$info['title'] .'_ä¹å—é‚®_'.C('pin_site_name')));
         $this->display();
     }
     public function go()
@@ -57,13 +61,13 @@ class jiukuaiyouAction extends frontendAction
         !$data['item_id'] && $this->ajaxReturn(0, L('invalid_item'));
         $data['info'] = $this->_post('content', 'trim');
         !$data['info'] && $this->ajaxReturn(0, L('please_input') . L('comment_content'));
-        //Ãô¸Ğ´Ê´¦Àí
+        //æ•æ„Ÿè¯å¤„ç†
         $check_result = D('badword')->check($data['info']);
         switch ($check_result['code']) {
-            case 1: //½ûÓÃ¡£Ö±½Ó·µ»Ø
+            case 1: //ç¦ç”¨ã€‚ç›´æ¥è¿”å›
                 $this->ajaxReturn(0, L('has_badword'));
                 break;
-            case 3: //ĞèÒªÉóºË
+            case 3: //éœ€è¦å®¡æ ¸
                 $data['status'] = 0;
                 break;
         }
@@ -72,10 +76,10 @@ class jiukuaiyouAction extends frontendAction
         $data['uname'] = $this->visitor->info['username'];
         $data['add_time']=time();
         $data['pid']=$this->_post('pid','intval');
-        //ÑéÖ¤ÉÌÆ·        
+        //éªŒè¯å•†å“        
         $item = $this->jky_item_mod->field('id')->where(array('id' => $data['item_id'], 'status' => '1'))->find();
         !$item && $this->ajaxReturn(0, L('invalid_item'));
-        //Ğ´ÈëÆÀÂÛ
+        //å†™å…¥è¯„è®º
         if (false === $this->jky_comment_mod->create($data)) {
             $this->ajaxReturn(0, $this->jky_comment_mod->getError());
         }
@@ -161,11 +165,10 @@ class jiukuaiyouAction extends frontendAction
             $this->ajaxReturn(1,'',$this->post_comment_mod->where(array('id'=>$id))->getField($type));    
         }
     }
-    protected function _parse_assign_list($list){
+    protected function _parse_assign_list($list){        
         foreach($list as $key=>$val){
             $list[$key]['state']=get_jky_state($val);
         }
-        
         return $list;
     }
 }

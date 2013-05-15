@@ -1,30 +1,42 @@
-<div class="right_box jky_login">
-    <div class="bg clearfix">
-        <div class="fl"></div>
-        <div class="fl">
-        
+<div class="right_box jky_login">    
+    <if condition="$def['is_login']">
+    <div class="bg_login clearfix bg">
+        <a href="{:U('user/index')}" class="avatar"><img src="{:avatar($visitor['id'], 48)}"/></a>
+        <div class="info">
+            <a class="username" href="{:U('user/index')}" title="{$visitor.username}">{$visitor.username}</a>
+            <p class="mt5">【<a href="{:U('user/index')}">个人中心</a>】</p>
         </div>
     </div>
-</div>
-<div class="right_box">
-    <div class="title">微博关注</div>
-    <div class="list">
-        <if condition="C('pin_sina_follow_code')">
-        <style type="text/css">
-        .WB_widget{
-            width: 130px;
-            overflow: hidden;
-            float: left;
-        }
-        </style>
-        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-        {:C('pin_sina_follow_code')}
-        </if>
-        <if condition="C('pin_qq_follow_code')">
-        <div class="mt10">
-            {:C('pin_qq_follow_code')}
+    <else/>
+    <div class="bg clearfix">
+        <a class="fl side_l" href="{:U('user/register')}" target="_blank"></a>
+        <div class="fr side_r">
+            <div class="clearfix title2">推荐登录方式</div>
+            <ul>
+                <volist name="oauth_list" id="val">
+                    <li class="{$val.code}">
+                        <a href="{:u('oauth/index',array('mod'=>$val['code']))}" style="background-image: url('static/images/oauth/{$val.code}/icon.png');"></a>
+                    </li>
+                </volist>            
+            </ul>
         </div>
-        </if>            
+    </div>
+    </if>
+    
+</div>
+<div class="recommend_list right_box">
+    <div class="title">推荐商品</div>
+    <div class="list">
+        <volist name="recommend_list" id="item">
+            <div class="item clearfix">            
+                <a href="{:U(MODULE_NAME.'/detail',array('id'=>$item['id']))}" class="fl thumb" target="_blank"><img src="{:attach($item['img'],MODULE_NAME)}"/></a>
+                <div class="fr">
+                    <a class="item_title uline">{$item.title}</a>:
+                    <div class="mprice">￥{$item.mprice}</div>
+                    <div class="price"><em>￥</em><strong>{$item.price}</strong></div>
+                </div>        
+            </div>
+        </volist>     
     </div>
 </div>
 <div class="new_cmt_list right_box">
@@ -41,4 +53,48 @@
             </div>
         </volist>     
     </div>
+</div>
+<div class="mt10 clearfix right_box favs">
+    <div class="m10">
+        <h3>爱我你就收藏我:</h3>
+        <div class="list clearfix">            
+            <div class="col">
+<!-- 将此标记放在您希望显示 添加到百度首页 按钮的位置 -->
+              <div class="col baidu"><i class="fl">百度首页</i><span class="bdaddtocitebtn" data="{'text':'九块邮','name':'九块邮'}"></span></div> 
+ 
+<!-- 将此代码放在适当的位置，建议在body结束前 -->
+<script id="bdaddtocite_shell"></script>
+<script>
+var bdShare_config_addtocite = {
+	"size":"small"
+	,"uid":"680405"
+};
+document.getElementById("bdaddtocite_shell").src="http://bdimg.share.baidu.com/static/js/addtocite_shell.js?t=" + Math.ceil(new Date()/3600000);
+</script>            
+            </div>
+            <div class="col fav J_add_bookmark"><i class="fl">收藏夹</i><span></span></div>
+        </div>
+        <h3>爱我你就关注我:</h3>
+        <div class="list">
+            <if condition="C('pin_sina_follow_code')">
+            <style type="text/css">
+            .WB_widget{
+                width: 130px;
+                overflow: hidden;
+                float: left;
+            }
+            </style>
+            <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+            {:C('pin_sina_follow_code')}
+            </if>
+            <if condition="C('pin_qq_follow_code')">
+            <div class="mt10">
+                {:C('pin_qq_follow_code')}
+            </div>
+            </if>   
+        </div>      
+    </div>  
+</div>
+<div class="mt10 clearfix">
+    {:R('advert/index', array(18), 'Widget')}
 </div>

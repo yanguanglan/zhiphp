@@ -1,6 +1,6 @@
 <?php 
 return array (
-  'URL_MODEL' => 0,
+  'URL_MODEL' => 2,
   'URL_HTML_SUFFIX' => '.html',
   'URL_PATHINFO_DEPR' => '-',
   'URL_ROUTER_ON' => true,
@@ -13,6 +13,12 @@ return array (
     '/^article-(\d+).html$/' => 'article/index?id=:1',
     '/^mall.html$/' => 'mall/index',
     '/^mall-(\d+).html$/' => 'mall/info?id=:1',
+	'/^jiukuaiyou.html$/' => 'jiukuaiyou/index',
+	'/^jiukuaiyou-(\d+)-(\d+).html$/' => 'jiukuaiyou/index?c1=:1&c2=:2',
+	'/^jiukuaiyou-(\d+).html$/' => 'jiukuaiyou/detail?id=:1',
+	'/^jiukuaiyou-p(\d+).html$/' => 'jiukuaiyou/index?p=:1',
+    '/^jiukuaiyou-go(\d+).html$/' => 'jiukuaiyou/go?id=:1',
+	
     '/^login.html$/' => 'user/login',
     '/^register.html$/' => 'user/register',
     '/^logout.html$/' => 'user/logout',
@@ -34,7 +40,7 @@ return array (
 	'/^taobao-cb.html$/' => 'oauth/callback?mod=taobao',
 	
     //分页
-    '/^index-p-(\d+).html$/' => 'index/index?p=:1',
+    '/^index-p(\d+).html$/' => 'index/index?p=:1',
     '/^cate-(\d+)-(\d+).html$/' => 'post_cate/index?id=:1&p=:2',
     //用户中心
     '/^user.html$/' => 'user/index',

@@ -2,7 +2,7 @@
 class postAction extends backendAction
 {
     var $list_relation=true;
-    var $spec_chars=array('*','-',',','.','，','。','|','<','>','(',')','《','》','+','/');
+    
     public function _initialize() {
         parent::_initialize();
         $this->_mod = D('post');

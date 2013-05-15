@@ -8,9 +8,17 @@ class backendAction extends baseAction
 {
     protected $_name = '';
     protected $menuid = 0;
+    protected $_mod;
+    var $spec_chars=array('*','-',',','.','，','。','|','<','>','(',')','《','》','+','/');
+    
     public function _initialize() {
         parent::_initialize();        
         $this->_name = $this->getActionName();
+         
+        try{
+            $this->_mod=D($this->_name);  
+        }catch(Exception $e){}
+        
         $this->check_priv();
         $this->menuid = $this->_request('menuid', 'trim', 0);        
         if ($this->menuid) {
@@ -273,4 +281,13 @@ class backendAction extends baseAction
             return false;
         }
     }
+    public function ajax_getchilds() {
+        $id = $this->_get('id', 'intval');
+        $return = $this->_mod->field('id,name')->where(array('pid'=>$id))->select();
+        if ($return) {
+            $this->ajaxReturn(1, L('operation_success'), $return);
+        } else {
+            $this->ajaxReturn(0, L('operation_failure'));
+        }
+    }        
 }

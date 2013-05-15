@@ -2,7 +2,7 @@
 return array(
     'page_title' => 'ZhiPHP--安装向导',
     'step_eula' => '阅读许可协议',
-    'wellcom_user_ZhiPHP' => '欢迎使用ZhiPHP社交分享系统！',
+    'wellcom_user_ZhiPHP' => '欢迎使用ZhiPHP-什么值得买系统！',
     'step_eula_desc' => '欢迎使用ZhiPHP安装向导！',
     'step_check' => '服务器检测',
     'step_check_desc' => '服务器环境和文件权限检测',

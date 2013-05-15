@@ -21,7 +21,7 @@ class advertWidget extends Action {
         $ad_list = M('ad')->field('id,type,name,url,content,desc,extimg,extval')->where($map)->order('ordid')->limit($limit)->select();
         foreach ($ad_list as $key=>$val) {
             $ad_list[$key]['html'] = $this->_get_html($val, $board_info);
-        }
+        }        
         $this->assign('board_info', $board_info);
         $this->assign('ad_list', $ad_list);
         $this->display(dirname(__FILE__).'/advert/'.$board_info['tpl'].'.html');

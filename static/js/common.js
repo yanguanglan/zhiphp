@@ -74,6 +74,10 @@ $(function() {
 			}
 		}, 'json');
 	});
+    $('.J_add_bookmark').click(function(){
+        AddFavorite(window.location,def.site_name);
+    });
+    //console.log(window.location);
 });
 
 function init_input() {

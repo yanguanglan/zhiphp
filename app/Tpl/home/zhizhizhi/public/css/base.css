@@ -104,6 +104,9 @@ hr {
 .mb0 {
 	margin-bottom:0px;
 }
+.m10{
+    margin: 10px;
+}
 .r3 {
 	border-radius:3px;
 }
@@ -149,4 +152,10 @@ hr {
 .blank {
     height: 8px;
     clear: both;
+}
+.mr5 {
+	margin-right: 5px;
+}
+.uline:hover{
+    text-decoration: underline;
 }

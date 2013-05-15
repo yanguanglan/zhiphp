@@ -70,12 +70,13 @@ class passport
      */
     public function auth($username, $password) {
         $uid = $this->_us->auth($username, $password);
+                
         if (!$uid) {
             $this->_error = $this->_us->get_error();
             return false;
         }
         if (is_array($uid)) {
-            $uid = $this->_local_sync($result);
+            $uid = $this->_local_sync($uid);
         }
         return $uid;
     }
@@ -136,7 +137,8 @@ class passport
         } else {
             $map = array('id' => intval($flag));
         }
-        return M('user')->where($map)->find();
+        $user= M('user')->where($map)->find();
+        return $user;
     }
 
     /**

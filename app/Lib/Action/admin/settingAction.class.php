@@ -21,10 +21,7 @@ class settingAction extends backendAction {
     public function cps(){
         $this->display();
     }    
-    public function edit() {    
-        $obj_dir = new Dir;
-        is_dir(RUNTIME_PATH) && $obj_dir->delDir(RUNTIME_PATH);
-        
+    public function edit() {            
         $setting = $this->_post('setting', ',');        
         
         foreach ($setting as $key => $val) {

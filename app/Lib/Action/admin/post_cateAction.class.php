@@ -2,7 +2,6 @@
 class post_cateAction extends backendAction {
     public function _initialize() {
         parent::_initialize();
-        $this->_mod = D('post_cate');
     }
 
     public function index() {
@@ -107,16 +106,6 @@ class post_cateAction extends backendAction {
             }
         } else {
             $this->ajaxReturn(0, L('illegal_parameters'));
-        }
-    }
-
-    public function ajax_getchilds() {
-        $id = $this->_get('id', 'intval');
-        $return = $this->_mod->field('id,name')->where(array('pid'=>$id))->select();
-        if ($return) {
-            $this->ajaxReturn(1, L('operation_success'), $return);
-        } else {
-            $this->ajaxReturn(0, L('operation_failure'));
         }
     }
     protected function _before_delete(){

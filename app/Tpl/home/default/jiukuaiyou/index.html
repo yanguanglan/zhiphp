@@ -8,16 +8,16 @@
             <div class="contentbox_l fl">
                 <div class="jky_cate">
                     <div class="level_1 clearfix">
-                        <a href="{:u(MODULE_NAME.'/index',array('cid'=>$cid))}" <if condition="$type eq 'all'">class="hover"</if>>全部<i></i></a>
-                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'underway','cid'=>$cid))}" <if condition="$type eq 'underway'">class="hover"</if>>进行中<i></i></a>
-                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'notstart','cid'=>$cid))}" <if condition="$type eq 'notstart'">class="hover"</if>>即将开始<i></i></a>
-                        <a href="{:U(MODULE_NAME.'/index',array('type'=>'end','cid'=>$cid))}" <if condition="$type eq 'end'">class="hover"</if>>已结束<i></i></a>
+                        <a href="{:u(MODULE_NAME.'/index')}" <if condition="$c1 eq 0">class="hover"</if>>全部<i></i></a>
+                        <volist name="type_list" id="v">
+                        <a href="{:U(MODULE_NAME.'/index',array('c1'=>$v['id'],'c2'=>$c2))}" <if condition="$c1 eq $v['id']">class="hover"</if>>{$v.name}<i></i></a>
+                        </volist>
                     </div>
                     <div class="level_2">
                         <span class="fl">筛选:</span>
-                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type))}" <if condition="$cid eq 0"> class="hover"</if>>所有</a>
+                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('c1'=>$c1,'c2'=>0))}" <if condition="$c2 eq 0"> class="hover"</if>>所有</a>
                         <volist name="cat_list" id="v">
-                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('type'=>$type,'cid'=>$v['id']))}" <if condition="$cid eq $v['id']"> class="hover"</if>>{$v.name}</a>
+                        <a href="{:U(MODULE_NAME.'/'.ACTION_NAME,array('c1'=>$c1,'c2'=>$v['id']))}" <if condition="$c2 eq $v['id']"> class="hover"</if>>{$v.name}</a>
                         </volist>
                     </div>
                 </div>               
@@ -25,12 +25,11 @@
                     <volist name="list" id="item">
                         <div class="jky_item <if condition='$i%3 eq 0'> no_mr</if> tag_{$item.state}">
                             <h3>
-                                <i class="orig" title="{$item.orig.title}" style="background-image: url('{:attach($item['orig']['img'],'jky_orig')}');"></i>
-                                <if condition="$item['is_duxiang']">
-                                    <span class="green"></span>    
+                                <if condition="$item['orig']['img']">
+                                <img class="orig" title="{$item.orig.name}" src="{:attach($item['orig']['img'],'jky_orig')}"/>
                                 </if>
                                 <a class="inform_title" href="{:u('jiukuaiyou/detail',array('id'=>$item['id']))}" target="_blank">
-                                    <i class="tao-d" title="九块邮"></i>{$item.title} 原价{$item.mprice}元 促销价{$item.price}元
+                                    <i <if condition="$item['is_duxiang']">class="tao-d"</if> title="九块邮"></i>{$item.title} 原价{$item.mprice}元 促销价{$item.price}元
                                 </a>
                             </h3>
                             <div class="pic">

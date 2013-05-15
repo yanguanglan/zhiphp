@@ -18,7 +18,7 @@
             max_spage: 5,
             none:'<div class="J_wall_none">抱歉，没有更多数据</div>'
         },
-        init: function(options){                  
+        init: function(options){                    
             options && $.extend($.ZhiPHP.wall.settings, options);
             var s = $.ZhiPHP.wall.settings;
             s.ajax_url = $(s.container).attr('data-uri');
@@ -29,10 +29,17 @@
             }
             //使用masonry插件
             $(s.container)[0] && $(s.container).imagesLoaded( function(){
+                //jQuery.easing.def="easeInQuad";
                 $(s.container).masonry({
                     itemSelector: s.item_unit
+                    /**/,
+                     isAnimated: true,
+                     animationOptions: {
+                        duration: 750,
+                        easing: 'easeOutQuad',
+                        queue: false
+                     }
                 });
-                $(s.item_unit).fadeIn("slow");
             });
             $.ZhiPHP.wall.is_loading = !1;
             this.is_empty=$.trim($(s.container).html()).length==0;
@@ -46,7 +53,6 @@
             if (!$.ZhiPHP.wall.is_loading && $(s.loading_bar)[0] && st <= s.distance||s.spage==2){
                 $.ZhiPHP.wall.is_loading = !0;
                 $.ZhiPHP.wall.loader();
-                //console.log('前'+new Date().getTime()+',s.spage='+s.spage,'_WALL_SPAGE='+_WALL_SPAGE);
             }
         },
         //加载状态
@@ -56,7 +62,6 @@
             var s = $.ZhiPHP.wall.settings;            
             if(s.ajax_url==null) return;            
             if(this.is_empty&&s.spage>2||_WALL_SPAGE>=s.spage) return;
-            //console.log('后'+new Date().getTime()+',s.spage='+s.spage,'_WALL_SPAGE='+_WALL_SPAGE);
             $(s.loading_bar).show();
             _WALL_SPAGE=s.spage;
             
@@ -68,7 +73,7 @@
                 success: function(result){                    
                     if(result.status == 1){                        
                         $.getScript("http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=" + new Date().getMinutes());
-                        //var html = $(result.data.html).css({opacity: 0});                                                
+                                                          
                         var html = $(result.data.html);
                         html.find('.J_img').imagesLoaded(function(){                            
                             if($.trim(result.data.html).length==0&&$(s.item_unit).length==0){
@@ -84,7 +89,7 @@
                                     $(window).unbind('scroll', $.ZhiPHP.wall.lazy_load);
                                 }
                                 !result.data.isfull && $(s.loading_bar).remove();
-                                $(s.item_unit).fadeIn("slow");
+                                $(s.item_unit).fadeIn();
                             });
                         });
                     }else{

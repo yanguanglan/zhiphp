@@ -63,7 +63,7 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 }
 #header {
 	background: white;
-	margin-bottom: 10px;
+	margin-bottom: 10px;   
 }
 .topnav {
 	background: #21457C;
@@ -209,13 +209,10 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 	font-family:"微软雅黑";
 	margin:0 0 5px 15px;
 }
-#main {
-    margin: 0px 0px 20px 0px;
-}
 .content {
 }
 .w668 {
-	width:710px;    
+	width:730px;    
 }
 .c-topbar {
 	padding: 0px 19px;
@@ -265,8 +262,8 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
 .productbox {
 }
 #J_waterfall .product{
-    display: none;
-    width: 672px;
+    /*display: none;*/
+    width: 692px;
 } 
 .product {
 	padding: 15px 19px 12px 19px;
@@ -680,7 +677,7 @@ _top:expression(document.compatMode && document.compatMode=='CSS1Compat' ? docum
     background: url("../images/star.png") left center no-repeat;
 }
 .product_show{    
-    width: 710px;
+    width: 730px;
 }
 .wall_loading{    
     margin: 10px 0px;

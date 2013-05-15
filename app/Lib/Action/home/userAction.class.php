@@ -37,7 +37,8 @@ class userAction extends userbaseAction {
             $tag_arg = array('uid'=>$uid, 'uname'=>$username, 'action'=>'login');
             tag('login_end', $tag_arg);
             //同步登录
-            $synlogin = $passport->synlogin($uid);
+            
+            $synlogin = $passport->synlogin($uid);            
             if (IS_AJAX) {
                 $this->ajaxReturn(1, L('login_successe').$synlogin);
             } else {
@@ -59,7 +60,6 @@ class userAction extends userbaseAction {
                 $ret_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : __APP__;
                 $this->assign('ret_url', $ret_url);
                 $this->assign('synlogout', $synlogout);
-                $this->_config_seo();
                 $this->display();
             }
         }
@@ -155,7 +155,6 @@ class userAction extends userbaseAction {
             if (!C('pin_reg_status')) {
                 $this->error(C('pin_reg_closed_reason'));
             }
-            $this->_config_seo();
             $this->display();
         }
     }
@@ -190,8 +189,7 @@ class userAction extends userbaseAction {
     */
     public function index() {
         $info = $this->visitor->get();            
-        $this->assign('info', $info);
-        $this->_config_seo();
+        $this->assign('info', $info);        
         $this->assign('favs_list',$this->post_favs_mod->relation(true)->where(array('uid'=>$this->uid))->order("id desc")->limit(4)->select());
         $this->display(); 
     }
@@ -221,7 +219,6 @@ class userAction extends userbaseAction {
         }        
         $info = $this->visitor->get();            
         $this->assign('info', $info);
-        $this->_config_seo();
         $this->display();        
     } 
     /**
@@ -288,7 +285,7 @@ class userAction extends userbaseAction {
             $this->success($msg['info']);
             //$this->assign('msg', $msg);
         }
-        $this->_config_seo();
+        
         $this->display();
     }
 
@@ -314,7 +311,7 @@ class userAction extends userbaseAction {
             }
         }
         $this->assign('oauth_list', $oauth_list);
-        $this->_config_seo();
+        
         $this->display();
     }
 
@@ -324,7 +321,7 @@ class userAction extends userbaseAction {
     public function custom() {
         $cover = $this->visitor->get('cover');
         $this->assign('cover', $cover);
-        $this->_config_seo();
+        
         $this->display();
     }
 
@@ -413,7 +410,7 @@ class userAction extends userbaseAction {
         }
         $address_list = $user_address_mod->where(array('uid'=>$this->visitor->info['id']))->select();
         $this->assign('address_list', $address_list);
-        $this->_config_seo();
+        
         $this->display();
     }
 

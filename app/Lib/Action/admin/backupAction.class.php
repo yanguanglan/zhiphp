@@ -10,7 +10,7 @@ class backupAction extends backendAction
     public function _initialize()
     {
         parent::_initialize();
-        $this->backup_path = 'backup/';
+        $this->backup_path = 'backup/';        
         $this->_database_mod = new Model();
     }
 

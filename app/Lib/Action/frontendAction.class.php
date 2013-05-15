@@ -43,6 +43,7 @@ class frontendAction extends baseAction {
             'm'=>MODULE_NAME,
             'a'=>ACTION_NAME,
             'url_prefix'=>__ROOT__,
+            'site_name'=>C('pin_site_name')
         );  
         $this->assign('def',$def);
         
@@ -63,7 +64,7 @@ class frontendAction extends baseAction {
     * 初始化访问者
     */
     private function _init_visitor() {
-        $this->visitor = new user_visitor();                
+        $this->visitor = new user_visitor();         
         $this->assign('visitor', $this->visitor->info);
     }
 
@@ -106,7 +107,7 @@ class frontendAction extends baseAction {
         if($page_seo['title']!=C('pin_site_title')){
             //$page_seo['title'].="_".C('pin_site_name');
         }
-        //print_r($page_seo);exit();
+        //print_r($page_seo);
         $this->assign('page_seo', $page_seo);
     }
 
@@ -272,20 +273,22 @@ class frontendAction extends baseAction {
         $recommend_list=$this->post_mod->where("is_recommend=1 and status=1 and post_time<=".time())->order("ordid")->limit("0,8")->select();
         $this->assign('recommend_list',$recommend_list);        
     }
-    protected function _assign_list($mod, $where, $page_size = 15, $relation = false,$callback="_parse_assign_list") {
+    protected function _assign_list($mod, $where, $page_size = 15, $relation = false,$order="id desc",$callback="_parse_assign_list") {
         import("ORG.Util.Page");
         $count = $mod->where($where)->count();
 
         $pager =$this->_pager($count, $page_size);
-        $select = $mod->where($where)->order('id desc')->limit($pager->firstRow . ',' .
+        $select = $mod->where($where)->order($order)->limit($pager->firstRow . ',' .
                 $pager->listRows);
         if ($relation) {
             $select = $select->relation($relation);
         }
-        $list = $select->select(); 
+        //print_r($mod->getLastSql());exit();
+        $list = $select->select();         
         if (method_exists($this, $callback)) {
             $list = $this->$callback($list);
-        }               
+        }    
+        //print_r($list);exit();           
         $this->assign('list', $list);
         $this->assign('page', $pager->fshow());
         return $list;

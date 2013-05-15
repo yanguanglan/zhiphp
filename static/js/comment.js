@@ -80,9 +80,24 @@
         parse_face:function(){
             var face_list=this.settings.face_list;
             for(var i=0;i<face_list.length;i++){
-               $(this.settings.page_list).html($(this.settings.page_list).html().replace("["+face_list[i]+"]",'<img src="'+def.url_prefix+'static/images/face/'+(i+1)+'.gif" title="'+this.settings.face_list[i]+'"/>'));                
+               //$(this.settings.page_list).html($(this.settings.page_list).html().replace("["+face_list[i]+"]",'<img src="'+def.url_prefix+'static/images/face/'+(i+1)+'.gif" title="'+this.settings.face_list[i]+'"/>'));
+               $(this.settings.page_list).html(this.str_replace("["+face_list[i]+"]"
+                    ,'<img src="'+def.url_prefix+'static/images/face/'+(i+1)+'.gif" title="'+this.settings.face_list[i]+'"/>'
+                    ,$(this.settings.page_list).html()));                
             }
         },
+        str_replace:function(search,replace,data){
+            var index=data.indexOf(search);    
+            if(index){
+                var list=data.split(search);
+                var str=list[0];
+                for(var i=1;i<list.length;i++){
+                    str+=replace+list[i];
+                }        
+                return str;
+            }
+            return data;
+        },        
         in_area:function(point,area){
             return point.x>=area.left&&point.x<=area.right&&point.y>=area.top&&point.y<=area.bottom;    
         },      
